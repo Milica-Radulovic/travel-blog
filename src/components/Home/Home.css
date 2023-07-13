@@ -1,0 +1,50 @@
+.slide {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+.slideSpan {
+    font-size: 2.5rem;
+    height: 30vh;
+    width: 40vw;
+    color: white;
+    text-shadow: 2px 8px 6px rgba(196, 40, 40, 0.2),
+        0px -5px 35px rgba(255, 255, 255, 0.3);
+}
+
+div.carousel {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.carouselSlide {
+    width: 100%;
+    height: 80vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.prevBtn {
+    width: 10rem;
+    height: 5rem;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 2rem;
+}
+.nextBtn {
+    width: 10rem;
+    height: 5rem;
+    border: none;
+    background-color: transparent;
+    font-size: 2rem;
+    color: white;
+}
