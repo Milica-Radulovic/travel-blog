@@ -5,8 +5,8 @@ import {
   FaInstagram,
   FaPinterestP,
   FaTwitter,
-  FaAngleUp,
 } from "react-icons/fa";
+import logo from "../../images/logo2.svg";
 
 const Footer = () => {
   const today = new Date();
@@ -64,7 +64,7 @@ const Footer = () => {
       {/* Icon ArrowUp, To the Top of the page */}
       <div className="arrowUp">
         <a className="iconArrowUp" href="#">
-          <FaAngleUp />
+          <img src={logo} style={{ width: "80px" }} />
         </a>
       </div>
     </footer>

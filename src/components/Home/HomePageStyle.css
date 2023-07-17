@@ -1,0 +1,109 @@
+.slide {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+.slideSpan {
+  font-size: 2.5rem;
+  height: 30vh;
+  width: 40vw;
+  color: white;
+  text-shadow: 2px 8px 6px rgba(196, 40, 40, 0.2),
+    0px -5px 35px rgba(255, 255, 255, 0.3);
+}
+
+div.carousel {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.carouselSlide {
+  width: 100%;
+  height: 80vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.prevBtn {
+  width: 10rem;
+  height: 5rem;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 2rem;
+}
+.nextBtn {
+  width: 10rem;
+  height: 5rem;
+  border: none;
+  background-color: transparent;
+  font-size: 2rem;
+  color: white;
+}
+
+/* About Us */
+.homePageWrapper {
+  font-family: "Ysabeau SC", sans-serif;
+  background-color: white;
+  color: #36565c;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.homePageInner {
+  width: 100%;
+  background-color: #edeadc;
+  margin: auto;
+}
+.homePageAboutUs {
+  width: 40%;
+  margin: auto;
+  padding: 5rem 0 2rem 0;
+  font-size: 1.4rem;
+}
+.homePageAboutUsButton {
+  font-family: "Ysabeau SC", sans-serif;
+  text-decoration: none;
+  width: fit-content;
+  padding: 1rem 2rem;
+  background-color: #46666b;
+  border: 1px solid #46666b;
+  border-radius: 2px;
+  color: #edeadc;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.4s linear;
+  display: block;
+  margin: 3rem 0;
+}
+.homePageAboutUsButton:hover {
+  background-color: #edeadc;
+  color: #46666b;
+}
+.homePageRecentPosts {
+  border-top: 0.2px solid #b4c7bf;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-top: 3rem;
+}
+.homePageSection {
+  padding: 3rem 0;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5rem;
+}

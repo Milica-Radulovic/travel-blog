@@ -1,25 +1,47 @@
 import { useParams, Link } from "react-router-dom";
+import { deleteDoc, doc } from "firebase/firestore";
+import React from "react";
+import { db, storage } from "../../firebase";
+import { toast } from "react-toastify";
+import { deleteObject, ref } from "firebase/storage";
+import { useNavigate } from "react-router-dom";
 
-const PostPage = ({ posts, handleDelete }) => {
+const PostPage = ({ articles }) => {
+  const navigate = useNavigate();
+
+  const handleDelete = async () => {
+    if (window.confirm("Are you sure you want to delete this article?")) {
+      try {
+        await deleteDoc(doc(db, "Articles", id));
+        toast("Article deleted successfully", { type: "success" });
+        const storageRef = ref(storage, imageUrl);
+        await deleteObject(storageRef);
+      } catch (error) {
+        toast("Error deleting article", { type: "error" });
+        console.log(error);
+      }
+      navigate("/blog");
+    }
+  };
+
   const { id } = useParams();
-  const post = posts.find((post) => post.id.toString() === id);
+  const article = articles.find((article) => article.id.toString() === id);
   return (
     <main>
       <article>
-        {post && (
+        {article && (
           <>
-            <h2> {post.title} </h2>
-            <p> {post.description}</p>
-            <img />
-            <p> {post.author}</p>
-            <p> {post.datetime}</p>
-            <p> {post.body}</p>
-
-            <button onClick={() => handleDelete(post.id)}>Delete</button>
+            <img src={article.imageUrl} style={{ width: "300px" }} />
+            <h2>{article.title}</h2>
+            <p>{article.author}</p>
+            <p>{article.datetime.toDate().toDateString()}</p>
+            <p>{article.description}</p>
+            <div dangerouslySetInnerHTML={{ __html: article.body }} />
+            <button onClick={handleDelete}>Delete</button>
           </>
         )}
 
-        {!post && (
+        {!article && (
           <>
             <h2>Page Not Found</h2>
             <Link to="/">Visit Our Homepage</Link>
