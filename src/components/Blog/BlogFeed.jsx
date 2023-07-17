@@ -1,10 +1,11 @@
 import BlogPost from "./BlogPost";
+import "./BlogPageStyle.css";
 
-const BlogFeed = ({ posts }) => {
+const BlogFeed = ({ articles }) => {
   return (
-    <section>
-      {posts.map((post) => (
-        <BlogPost key={post.id} post={post} />
+    <section className="blogPageSection">
+      {articles.map((article) => (
+        <BlogPost key={article.id} article={article} />
       ))}
     </section>
   );

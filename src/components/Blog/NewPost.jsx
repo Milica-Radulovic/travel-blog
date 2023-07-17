@@ -7,8 +7,100 @@ import {
   FaPinterestP,
   FaTwitter,
 } from "react-icons/fa";
+import React, { useState } from "react";
+import { Timestamp, collection, addDoc } from "firebase/firestore";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { storage, db } from "../../firebase";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import logo from "../../images/logo.svg";
+import { Editor } from "@tinymce/tinymce-react";
 
-const NewPost = ({ handleSubmit, formValues, inputChange }) => {
+const NewPost = () => {
+  const [formData, setFormData] = useState({
+    title: "",
+    author: "",
+    datetime: Timestamp.now().toDate(),
+    description: "",
+    body: "",
+    image: "",
+  });
+  const [progress, setProgress] = useState(0);
+  const navigate = useNavigate();
+
+  // handle Input change
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // handle Image change
+  const handleImageChange = (e) => {
+    setFormData({ ...formData, image: e.target.files[0] });
+  };
+
+  // handle Submit
+  const handleSubmit = () => {
+    if (
+      !formData.title ||
+      !formData.author ||
+      !formData.description ||
+      !formData.body ||
+      !formData.image
+    ) {
+      alert("Please fill all the fields");
+    }
+
+    const storageRef = ref(
+      storage,
+      `/images/${Date.now()}${formData.image.name}`
+    );
+
+    const uploadImage = uploadBytesResumable(storageRef, formData.image);
+
+    uploadImage.on(
+      "state_changed",
+      (snapshot) => {
+        const progressPercent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setProgress(progressPercent);
+      },
+      (err) => {
+        console.log(err);
+      },
+      () => {
+        setFormData({
+          title: "",
+          author: "",
+          description: "",
+          body: "",
+          image: "",
+        });
+
+        getDownloadURL(uploadImage.snapshot.ref).then((url) => {
+          const articleRef = collection(db, "Articles");
+          addDoc(articleRef, {
+            title: formData.title,
+            author: formData.author,
+            description: formData.description,
+            body: formData.body,
+            imageUrl: url,
+            datetime: Timestamp.now().toDate(),
+          })
+            .then(() => {
+              toast("Post added successfully", { type: "success" });
+              setProgress(0);
+            })
+            .catch((err) => {
+              toast("Error adding post", { type: "error" });
+            });
+          navigate("/blog");
+        });
+      }
+    );
+  };
+
   return (
     <main className="wrapper">
       <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
@@ -17,7 +109,10 @@ const NewPost = ({ handleSubmit, formValues, inputChange }) => {
       <div className="inner">
         {/* Text Container with Logo and Social Media Links */}
         <section className="textContainer">
-          <div className="logo">Logo</div>
+          <div className="logo">
+            <img src={logo} style={{ width: "200px" }} />
+            <p className="logoText">Write your own tale...</p>
+          </div>
           <p>
             Greetings, fellow wanderers and adventure seekers! We invite you to
             become a part of our vibrant travel community, where we come
@@ -73,63 +168,88 @@ const NewPost = ({ handleSubmit, formValues, inputChange }) => {
 
         {/* Form Section */}
         <section className="formContainer">
-          <form className="newPostForm" onSubmit={handleSubmit}>
-            <label htmlFor="postImage">Image Url:</label>
+          <div className="newPostForm">
+            <label htmlFor="">Image</label>
             <input
-              id="postImage"
-              type="text"
+              type="file"
               name="image"
-              required
-              value={formValues.image}
-              onChange={inputChange}
+              accept="image/*"
+              onChange={(e) => handleImageChange(e)}
             />
 
-            <label htmlFor="postTitle">Title:</label>
+            {progress === 0 ? null : (
+              <div className="progress">
+                <div
+                  className="progress-bar progress-bar-striped mt-2"
+                  style={{ width: `${progress}%` }}
+                >
+                  {`uploading image ${progress}%`}
+                </div>
+              </div>
+            )}
+
+            <label htmlFor="">Title</label>
             <input
-              id="postTitle"
               type="text"
               name="title"
-              required
-              value={formValues.title}
-              onChange={inputChange}
+              value={formData.title}
+              onChange={(e) => handleChange(e)}
             />
 
-            <label htmlFor="postAuthor">Author:</label>
+            <label htmlFor="">Author</label>
             <input
-              id="postAuthor"
               type="text"
               name="author"
-              required
-              value={formValues.author}
-              onChange={inputChange}
+              value={formData.author}
+              onChange={(e) => handleChange(e)}
             />
 
-            <label htmlFor="postDescription">Description:</label>
+            <label htmlFor="">Description</label>
             <textarea
               rows="10"
               cols="50"
-              id="postDescription"
               name="description"
-              required
-              value={formValues.description}
-              onChange={inputChange}
-            />
+              value={formData.description}
+              onChange={(e) => handleChange(e)}
+            ></textarea>
 
-            <label htmlFor="postBody">Post:</label>
-            <textarea
+            <label htmlFor="">Body</label>
+            <Editor
+              textareaName="body"
+              apiKey="4302b75eb45ce7c6212f47055d96a6f1b2f2b5af0095c92383e1cba784f571d4" // Replace with your TinyMCE API key
+              initialValue="Write your own story..."
+              init={{
+                height: 500,
+                menubar: false,
+                plugins: [
+                  "advlist autolink lists link image charmap print preview anchor",
+                  "searchreplace visualblocks code fullscreen",
+                  "insertdatetime media table paste code help wordcount",
+                ],
+                toolbar:
+                  "undo redo | formatselect | " +
+                  "bold italic backcolor | alignleft aligncenter " +
+                  "alignright alignjustify | bullist numlist outdent indent | " +
+                  "removeformat | help",
+                content_style:
+                  "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+              }}
+              onEditorChange={(content) => {
+                setFormData({ ...formData, body: content });
+              }}
+            />
+            {/*             <textarea
               rows="20"
               cols="50"
-              id="postBody"
               name="body"
-              required
-              value={formValues.body}
-              onChange={inputChange}
-            />
+              value={formData.body}
+              onChange={(e) => handleChange(e)}
+            ></textarea> */}
 
-            <button className="submitButton" type="submit">
+            <button className="submitButton" onClick={handleSubmit}>
               Submit
             </button>
-          </form>
+          </div>
         </section>
       </div>
     </main>

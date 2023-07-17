@@ -7,6 +7,7 @@ import {
   FaPinterestP,
   FaTwitter,
 } from "react-icons/fa";
+import logo from "../../images/logo.svg";
 
 const Contact = () => {
   return (
@@ -17,7 +18,10 @@ const Contact = () => {
       <div className="inner">
         {/* Text Section with Logo and Social Media Links */}
         <section className="textContainer">
-          <div className="logo">Logo</div>
+          <div className="logo">
+            <img src={logo} style={{ width: "200px" }} />
+            <p className="logoText">Write your own tale...</p>
+          </div>
           <p>
             We believe that the best travel experiences are built on a
             foundation of knowledge and support. If you have any questions or
@@ -28,12 +32,8 @@ const Contact = () => {
             Connect with us through our website or social media channels, and
             let's start a conversation.
           </p>
-          <p>
-            Got burning questions or just itching for a friendly chat? We're
-            here, armed with our travel expertise and a great sense of humor,
-            ready to tackle all your queries. Don't be shy - shoot us a message,
-            and let the adventure begin!
-          </p>
+
+          {/* Social Media Link */}
           <div className="soialMediaLinksContainer">
             <span className="socialMediaLink">
               <Link className="link">
