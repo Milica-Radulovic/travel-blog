@@ -94,6 +94,7 @@ const Home = ({ articles }) => {
                 duration={3000}
               >
                 <Link
+                  to="/travelList"
                   style={{
                     color: "#36565C",
                     textDecoration: "none",
@@ -119,6 +120,7 @@ const Home = ({ articles }) => {
                 duration={3000}
               >
                 <Link
+                  to="/topTips"
                   style={{
                     color: "#36565C",
                     textDecoration: "none",
@@ -142,6 +144,7 @@ const Home = ({ articles }) => {
                 duration={3000}
               >
                 <Link
+                  to="/planTrip"
                   style={{
                     color: "#36565C",
                     textDecoration: "none",

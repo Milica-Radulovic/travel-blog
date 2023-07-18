@@ -3,6 +3,9 @@ import { Routes, Route } from "react-router-dom";
 import Footer from "./components/Others/Footer";
 import Missing from "./components/Others/Missing";
 import Home from "./components/Home/index";
+import TravelList from "./components/Home/TravelList";
+import TopTravelTips from "./components/Home/TopTravelTips";
+import PlanTrip from "./components/Home/PlanTrip";
 import About from "./components/About/index";
 import Blog from "./components/Blog/index";
 import NewPost from "./components/Blog/NewPost";
@@ -52,6 +55,10 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home articles={articles} />} />
+
+          <Route path="/travelList" element={<TravelList />} />
+          <Route path="/topTips" element={<TopTravelTips />} />
+          <Route path="/planTrip" element={<PlanTrip />} />
           <Route path="about" element={<About />} />
           <Route
             path="blog"
