@@ -20,7 +20,7 @@
 
 div.carousel {
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   position: relative;
 }
 
@@ -54,22 +54,28 @@ div.carousel {
   font-family: "Ysabeau SC", sans-serif;
   background-color: white;
   color: #36565c;
-
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .homePageInner {
   width: 100%;
-  background-color: #edeadc;
+  background-color: white;
   margin: auto;
 }
+
+.homePageAboutUsWrapper {
+  background-color: #edeadc;
+}
+
 .homePageAboutUs {
   width: 40%;
   margin: auto;
   padding: 5rem 0 2rem 0;
   font-size: 1.4rem;
 }
+
 .homePageAboutUsButton {
   font-family: "Ysabeau SC", sans-serif;
   text-decoration: none;
@@ -86,10 +92,12 @@ div.carousel {
   display: block;
   margin: 3rem 0;
 }
+
 .homePageAboutUsButton:hover {
   background-color: #edeadc;
   color: #46666b;
 }
+
 .homePageRecentPosts {
   border-top: 0.2px solid #b4c7bf;
   background-color: white;
@@ -99,6 +107,7 @@ div.carousel {
   position: relative;
   padding-top: 3rem;
 }
+
 .homePageSection {
   padding: 3rem 0;
   width: 80%;
@@ -106,4 +115,36 @@ div.carousel {
   display: flex;
   flex-wrap: wrap;
   gap: 5rem;
+}
+
+.travelTips {
+  background-color: white;
+  width: 80%;
+  margin: auto;
+}
+
+.travelTipsPara {
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.travelTipsWrapper {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+
+.travelTipsLink {
+  border: 1px solid #b4c7bf;
+  width: 30%;
+  text-align: center;
+  margin-bottom: 5rem;
+  text-decoration: none;
+  color: #36565c;
+  padding: 2rem;
+  font-size: 1.2rem;
+}
+
+.travelTipsH2 {
+  margin: 6rem 0;
 }
