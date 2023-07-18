@@ -1,0 +1,66 @@
+.recent-posts {
+  text-align: center;
+  color: #36565c;
+  background-color: #edeadc;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start; /* Align items to the top */
+  flex-wrap: wrap;
+  background-color: #edeadc;
+}
+
+.card-link {
+  text-decoration: none;
+}
+
+.card {
+  width: 550px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: left;
+  color: #36565c;
+}
+
+.card img {
+  width: 450px;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.card-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align the text to the left */
+  padding: 10px;
+}
+
+.card-title {
+  font-size: 2.5rem;
+  color: #36565c;
+  margin-bottom: 10px;
+  text-align: left; /* Align the title to the left */
+}
+
+.card-author,
+.card-time {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  text-align: left; /* Align the author and time to the left */
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 90vw;
+  }
+}
