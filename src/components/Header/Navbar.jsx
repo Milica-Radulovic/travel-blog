@@ -20,9 +20,9 @@ const Navbar = () => {
         <li>
           <Link to="contact">Contact</Link>
         </li>
-        <li>
+        {/*      <li>
           <Link to="comunity">Comunity</Link>
-        </li>
+        </li> */}
         {!user ? (
           <li>
             <Link to="/signin">
