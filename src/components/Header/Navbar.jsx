@@ -1,9 +1,18 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import Logo from "./Logo";
 import { FaUser } from "react-icons/fa";
 import { UserAuth } from "../../context/AuthContext";
-const Navbar = () => {
+import SearchLayer from "../Blog/SearchLayer";
+import "./Header.css";
+const Navbar = ({ search, setSearch, articles }) => {
   const { user } = UserAuth();
+  const [showSearchLayer, setShowSearchLayer] = useState(false);
+
+  const handleSearchIconClick = () => {
+    console.log("Search icon clicked");
+    setShowSearchLayer(!showSearchLayer);
+  };
 
   return (
     <nav className="navBar">
@@ -21,7 +30,19 @@ const Navbar = () => {
         <li>
           <Link to="contact">Contact</Link>
         </li>
-
+        <li>
+          <Link className="search-icon" onClick={handleSearchIconClick}>
+            <i className="fa-solid fa-magnifying-glass"></i>
+          </Link>
+          {showSearchLayer && (
+            <SearchLayer
+              onClose={handleSearchIconClick}
+              search={search}
+              setSearch={setSearch}
+              articles={articles}
+            />
+          )}
+        </li>
         {!user ? (
           <li>
             <Link to="/signin">

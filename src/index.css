@@ -3,6 +3,7 @@
   width: 100vw;
   height: 100%;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 body {
   background-color: #43656a;
