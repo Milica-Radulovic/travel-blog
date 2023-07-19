@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
-import "./BlogPageStyle.css";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
+import "./BlogPageStyle.css";
 
 const BlogPost = ({ article }) => {
   return (
+    /* Blog Article */
     <article className="blogPageArticle">
       <Link className="blogPostLink" to={`/article/${article.id}`}>
+        {/* Post Image */}
         <img
           className="blogPageImage"
           src={article.imageUrl}
@@ -16,12 +18,17 @@ const BlogPost = ({ article }) => {
             objectFit: "cover",
           }}
         />
+
+        {/* Post Text */}
         <div className="blogPageArticleText">
+          {/* Post Title */}
           <h2 className="blogPageTitle">
             {article.title.length <= 40
               ? article.title
               : `${article.title.slice(0, 40)}...`}
           </h2>
+
+          {/* Pot Author */}
           <p className="blogPageAuthor">
             <span
               style={{
@@ -33,6 +40,8 @@ const BlogPost = ({ article }) => {
             </span>
             {article.author}
           </p>
+
+          {/* Post Date */}
           <p>
             {" "}
             <span
@@ -45,6 +54,8 @@ const BlogPost = ({ article }) => {
             </span>
             {article.datetime.toDate().toDateString()}
           </p>
+
+          {/* Post Description */}
           <p>
             <span
               style={{
@@ -58,6 +69,8 @@ const BlogPost = ({ article }) => {
               ? article.description
               : `${article.description.slice(0, 150)}...`}
           </p>
+
+          {/* See more */}
           <div className="blogPageIconContainer">
             <Fade
               className="blogPageDMFade"

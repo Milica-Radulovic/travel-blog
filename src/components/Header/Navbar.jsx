@@ -4,6 +4,7 @@ import { FaUser } from "react-icons/fa";
 import { UserAuth } from "../../context/AuthContext";
 const Navbar = () => {
   const { user } = UserAuth();
+
   return (
     <nav className="navBar">
       <ul className="navBarList">
@@ -20,9 +21,7 @@ const Navbar = () => {
         <li>
           <Link to="contact">Contact</Link>
         </li>
-        {/*      <li>
-          <Link to="comunity">Comunity</Link>
-        </li> */}
+
         {!user ? (
           <li>
             <Link to="/signin">
@@ -31,7 +30,10 @@ const Navbar = () => {
           </li>
         ) : (
           <li>
-            <Link to="/account">Account</Link>
+            <Link to="/account">
+              {" "}
+              <p>{user && user.email} </p>
+            </Link>
           </li>
         )}
       </ul>

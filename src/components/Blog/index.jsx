@@ -1,30 +1,35 @@
 import { Link } from "react-router-dom";
-import BlogFeed from "./BlogFeed";
-import "./BlogPageStyle.css";
 import { Fade } from "react-awesome-reveal";
-import Search from "./Search";
 import { UserAuth } from "../../context/AuthContext";
+import BlogFeed from "./BlogFeed";
+import Search from "./Search";
+import "./BlogPageStyle.css";
 
 const Blog = ({ search, setSearch, articles }) => {
   const { user } = UserAuth();
 
   return (
     <main className="blogPageWrapper">
+      {/* Blog Title */}
       <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
         <h2>All Travels Tales</h2>
       </Fade>
+
       <div className="blogPageButtonAndSearch">
+        {/* Link to Create New Post if you are a User */}
         {user && (
           <Link className="blogPageButtonLink" to="/article">
             Click here to write your own tale...
           </Link>
         )}
 
+        {/* Search Bar */}
         <div>
           <Search search={search} setSearch={setSearch} />
         </div>
       </div>
 
+      {/* All Posts */}
       <div className="blogPageInner">
         <>
           {articles.length ? (

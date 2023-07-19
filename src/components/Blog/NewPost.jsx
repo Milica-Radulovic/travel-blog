@@ -1,22 +1,23 @@
-import { Link } from "react-router-dom";
-import "./NewPostStyle.css";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
+import { Timestamp, collection, addDoc } from "firebase/firestore";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { storage, db } from "../../firebase";
+import { toast } from "react-toastify";
+import { Editor } from "@tinymce/tinymce-react";
+import { UserAuth } from "../../context/AuthContext";
 import {
   FaFacebookF,
   FaInstagram,
   FaPinterestP,
   FaTwitter,
 } from "react-icons/fa";
-import React, { useState } from "react";
-import { Timestamp, collection, addDoc } from "firebase/firestore";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { storage, db } from "../../firebase";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import logo from "../../images/logo.svg";
-import { Editor } from "@tinymce/tinymce-react";
+import "./NewPostStyle.css";
 
 const NewPost = () => {
+  const { user } = UserAuth();
   const [formData, setFormData] = useState({
     title: "",
     author: "",
@@ -87,6 +88,10 @@ const NewPost = () => {
             body: formData.body,
             imageUrl: url,
             datetime: Timestamp.now().toDate(),
+            createdBy: user.displayName,
+            userId: user.uid,
+            likes: [],
+            comments: [],
           })
             .then(() => {
               toast("Post added successfully", { type: "success" });

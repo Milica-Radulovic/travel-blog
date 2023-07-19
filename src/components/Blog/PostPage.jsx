@@ -1,19 +1,25 @@
-import { useParams, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { deleteDoc, doc } from "firebase/firestore";
-import React from "react";
 import { db, storage } from "../../firebase";
 import { toast } from "react-toastify";
 import { deleteObject, ref } from "firebase/storage";
-import { useNavigate } from "react-router-dom";
-import "./PostPageStyle.css";
-import logo from "../../images/logo.svg";
 import { FaAngleDoubleDown } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
+import { UserAuth } from "../../context/AuthContext";
 import RecentPostsFeed from "./RecentPostsFeed";
+import LikeArticle from "./LikeArticle";
+import logo from "../../images/logo.svg";
+import "./PostPageStyle.css";
 
 const PostPage = ({ articles }) => {
+  const { user } = UserAuth();
   const navigate = useNavigate();
+  const [likes, setLikes] = useState("");
+  const { id } = useParams();
+  const article = articles.find((article) => article.id.toString() === id);
 
+  // handle Delete
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this article?")) {
       try {
@@ -29,18 +35,20 @@ const PostPage = ({ articles }) => {
     }
   };
 
-  const { id } = useParams();
-  const article = articles.find((article) => article.id.toString() === id);
   return (
     <main className="postPageWrappe">
+      {/* Logo */}
       <span className="registrationLogo">
         <img className="logoColor" src={logo} style={{ width: "200px" }} />
         <p className="logoText">Write your own tale...</p>
       </span>
+
       <div className="postPageInner">
+        {/* Post */}
         <article className="postPageArticle">
           {article && (
             <>
+              {/* Post Title */}
               <Fade
                 className="blogPageDMFade"
                 delay={1e2}
@@ -50,13 +58,18 @@ const PostPage = ({ articles }) => {
               >
                 <h2 className="postPageTitle">{article.title}</h2>
               </Fade>
+
+              {/* Post Description */}
               <p className="postPageDescription">{article.description}</p>
+
+              {/* Post Image */}
               <img
                 className="postPageImage"
                 src={article.imageUrl}
                 style={{ width: "100%", height: "700px", objectFit: "cover" }}
               />
 
+              {/* Post Author */}
               <p className="postPageAuthor">
                 {" "}
                 <span
@@ -69,6 +82,8 @@ const PostPage = ({ articles }) => {
                 </span>
                 {article.author}
               </p>
+
+              {/* Post Date */}
               <p className="postPageDate">
                 <span
                   style={{
@@ -81,16 +96,23 @@ const PostPage = ({ articles }) => {
                 {article.datetime.toDate().toDateString()}
               </p>
 
+              {/* Post Body */}
               <div
                 className="postPageBody"
                 dangerouslySetInnerHTML={{ __html: article.body }}
               />
-              <button className="submitButton" onClick={handleDelete}>
-                Delete
-              </button>
+
+              <div>{user && <LikeArticle id={id} likes={likes} />}</div>
+
+              {/*        {user && user.uid === userId && (
+                <button className="submitButton" onClick={handleDelete}>
+                  Delete
+                </button>
+              )} */}
             </>
           )}
 
+          {/* Message if there is no Post */}
           {!article && (
             <>
               <h2>Page Not Found</h2>
@@ -98,7 +120,10 @@ const PostPage = ({ articles }) => {
             </>
           )}
         </article>
+
+        {/* Aside with latest Poss and Link to Blog Page */}
         <aside className="postPageAside">
+          {/* Link to Blog Page */}
           <div className="postPageLinkToBlog">
             <div className="postPageLinkToBlogInner">
               <Link className="linkToBlogPage" to="/blog">
@@ -126,6 +151,8 @@ const PostPage = ({ articles }) => {
               </Link>
             </div>
           </div>
+
+          {/* Recent Posts */}
           <RecentPostsFeed articles={articles} />
         </aside>
       </div>
