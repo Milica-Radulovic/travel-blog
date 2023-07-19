@@ -53,7 +53,11 @@ const App = () => {
   return (
     <div className="mainContainer">
       <AuthContextProvider>
-        <Header />
+        <Header
+          articles={searchResults}
+          search={search}
+          setSearch={setSearch}
+        />
         <Routes>
           <Route path="/" element={<Home articles={articles} />} />
 

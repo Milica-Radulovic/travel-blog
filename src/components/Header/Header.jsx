@@ -1,9 +1,9 @@
 import Navbar from "./Navbar";
 import "./Header.css";
-const Header = () => {
+const Header = ({ search, setSearch, articles }) => {
   return (
     <header className="header">
-      <Navbar />
+      <Navbar search={search} setSearch={setSearch} articles={articles} />
     </header>
   );
 };
