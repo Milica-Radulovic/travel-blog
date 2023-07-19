@@ -30,7 +30,7 @@ const ItemInput = ({ onAddItems }) => {
                 Plan your trip in advance and ensure you don't forget a thing!
             </label>
 
-            <form onSubmit={handleFormSubmit}>
+            <form onSubmit={handleFormSubmit} className="formInput">
                 <div className="inputCont">
                     <input
                         type="text"
@@ -84,7 +84,7 @@ const Item = ({ handleEdit, item, onDelete }) => {
 const ToDo = ({ handleEdit, toDo }) => {
     return (
         <div className="ItemList">
-            <h2>
+            <h2 className="header2">
                 <i
                     className="fa-solid fa-compass"
                     style={{ marginRight: "0.5em" }}
@@ -107,7 +107,7 @@ const ToDo = ({ handleEdit, toDo }) => {
 const Done = ({ handleEdit, done, onDelete }) => {
     return (
         <div className="ItemList">
-            <h2>
+            <h2 className="header2">
                 <i
                     className="fa-solid fa-suitcase-rolling"
                     style={{ marginRight: "0.5em" }}
