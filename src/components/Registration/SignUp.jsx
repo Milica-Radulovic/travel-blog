@@ -3,10 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import { Fade } from "react-awesome-reveal";
 import logo from "../../images/logo.svg";
+import { toast } from "react-toastify";
 
+/* import React, { useState } from "react";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../../firebase";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+ */
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const [error, setError] = useState("");
   const { createUser } = UserAuth();
   const navigate = useNavigate();
@@ -17,16 +25,27 @@ const SignUp = () => {
     try {
       await createUser(email, password);
       navigate("/account");
-    } catch (e) {
+    } catch (error) {
       setError(e.message);
       console.log(e.message);
+      toast(error.code, { type: "error" });
     }
   };
+
+  /*  const handleSubmit = async () => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      updateProfile(auth.currentUser, { displayName: name });
+      navigate("/");
+    } catch (error) {
+      toast(error.code, { type: "error" });
+    }
+  }; */
 
   return (
     <main className="registartionWrapper">
       <span className="registrationLogo">
-        <img src={logo} style={{ width: "200px" }} />{" "}
+        <img src={logo} style={{ width: "200px" }} />
         <p className="logoText">Write your own tale...</p>
       </span>
       <div className="registrationInner">
@@ -42,6 +61,9 @@ const SignUp = () => {
           </p>
         </div>
         <form className="registrationForm" onSubmit={handleSubmit}>
+          {/*        <label>Name</label>
+          <input type="text" onChange={(e) => setName(e.target.value)} /> */}
+
           <label>Email Address</label>
           <input type="email" onChange={(e) => setEmail(e.target.value)} />
 

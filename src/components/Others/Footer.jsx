@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import "./FooterStyle.css";
 import {
   FaFacebookF,
   FaInstagram,
@@ -7,9 +6,11 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import logo from "../../images/logo2.svg";
+import "./FooterStyle.css";
 
 const Footer = () => {
   const today = new Date();
+
   return (
     <footer className="footer">
       <h3>Links</h3>

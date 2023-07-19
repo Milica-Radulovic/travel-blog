@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import "../Blog/NewPostStyle.css";
 import { Fade } from "react-awesome-reveal";
 import {
   FaFacebookF,
@@ -8,6 +7,7 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import logo from "../../images/logo.svg";
+import "../Blog/NewPostStyle.css";
 
 const Contact = () => {
   return (

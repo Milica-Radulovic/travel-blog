@@ -15,6 +15,7 @@ import Header from "./components/Header/Header";
 import SignIn from "./components/Registration/SignIn";
 import SignUp from "./components/Registration/SignUp";
 import AccountPage from "./components/Registration/AccountPage";
+import Profile from "./components/Registration/Profile";
 import ProtectedRoute from "./components/Registration/ProtectedRoute";
 import { AuthContextProvider } from "./context/AuthContext";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
@@ -78,6 +79,7 @@ const App = () => {
           <Route path="contact" element={<Contact />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/profile" element={<Profile />} />
           <Route
             path="/account"
             element={

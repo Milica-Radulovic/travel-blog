@@ -1,15 +1,16 @@
-import "./HomePageStyle.css";
 import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
-import { FaAngleDoubleDown } from "react-icons/fa";
 import CarouselPage from "./Carousel";
 import HomeFeed from "./HomeFeed";
+import "./HomePageStyle.css";
+
 const Home = ({ articles }) => {
   return (
     <>
       <CarouselPage />
       <main className="homePageWrapper">
         <div className="homePageInner">
+          {/* Small Section About Us with Link to the About Page */}
           <div className="homePageAboutUsWrapper">
             {" "}
             <div className="homePageAboutUs">
@@ -44,6 +45,7 @@ const Home = ({ articles }) => {
             </div>
           </div>
 
+          {/* Recent 6 Posts */}
           <section className="homePageRecentPosts">
             <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
               <h2>Recent Traveler's Tales</h2>
@@ -57,7 +59,10 @@ const Home = ({ articles }) => {
               <p>No Posts to display.</p>
             )}
           </section>
+
+          {/* Top Travel Tips */}
           <section className="travelTips">
+            {/* Title */}
             <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
               <div
                 className="travelTipsH2"
@@ -86,6 +91,7 @@ const Home = ({ articles }) => {
               and unbelievable destinations.
             </p>
             <div className="travelTipsWrapper">
+              {/* Travel Tips */}
               <Fade
                 className="travelTipsLink"
                 delay={1e2}
@@ -112,6 +118,8 @@ const Home = ({ articles }) => {
                   </p>
                 </Link>
               </Fade>
+
+              {/* Travel Tips */}
               <Fade
                 className="travelTipsLink"
                 delay={1e2}
@@ -136,6 +144,8 @@ const Home = ({ articles }) => {
                   <p>Our 20 Best Travel Tips After 20 Years of Traveling</p>
                 </Link>
               </Fade>
+
+              {/* Travel Tips */}
               <Fade
                 className="travelTipsLink"
                 delay={1e2}
