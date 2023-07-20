@@ -1,18 +1,17 @@
 .backGround {
-  background-color: #edeadc;
+  background-color: white;
   padding: 2rem;
 }
 
-.wrapper {
+.planningWrapper {
   max-width: 1000px;
   margin: 0 auto;
 }
 
-.title {
+.planning {
   text-align: center;
-  color: #46666b;
-  font-size: 2rem;
-  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  margin-top: 5rem;
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -25,6 +24,7 @@
   margin: 0 auto;
   width: 100%;
   max-width: 1000px;
+  background-color: #edeadc;
 }
 
 .tipsList li {
