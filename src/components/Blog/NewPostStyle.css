@@ -88,6 +88,7 @@ textarea:focus {
   outline: 1px solid #688387;
   background-color: #fbfbfc;
   border-radius: 5px;
+  padding-left: 1rem;
 }
 
 input::file-selector-button,
@@ -160,7 +161,7 @@ input[type="file"]::file-selector-button:hover,
     width: 90%;
     flex-direction: column;
     gap: 2rem;
-    padding: 2rem 0;
+    padding: 0;
   }
 
   .textContainer {
@@ -172,7 +173,8 @@ input[type="file"]::file-selector-button:hover,
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 2.6rem;
+    margin: 0.25rem 0;
   }
 
   .logo {

@@ -15,6 +15,7 @@ h3 {
   color: #edeadc;
   font-size: 1.4rem;
   font-weight: 300;
+  padding-top: 1rem;
 }
 
 .footerLinksToPages {
@@ -73,4 +74,70 @@ h3 {
 
 .iconArrowUp {
   color: #edeadc;
+}
+
+@media (max-width: 800px) {
+  input::file-selector-button {
+    padding: 0.6rem 2rem;
+  }
+}
+
+.submitButton {
+  width: 200px;
+  padding: 1rem 1rem;
+  margin: auto;
+  margin-top: 2rem;
+  background-color: #46666b;
+  border: none;
+  border-radius: 2px;
+  color: #fbfbfc;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.4s linear;
+}
+
+.submitButton:hover {
+  background-color: #edeadc;
+  color: #36565c;
+  border: 1px solid #36565c;
+}
+
+@media (min-width: 576) and (max-width: 768px) {
+}
+
+@media (max-width: 576px) {
+  .footer {
+    padding: 0.8rem;
+    height: 350px;
+    gap: 1rem;
+    justify-content: flex-start;
+  }
+  h3 {
+    font-size: 1.2rem;
+    padding-top: 0;
+  }
+
+  .footerLinksToPages {
+    gap: 0.8rem;
+  }
+
+  .footerSoialMediaLinksContainer {
+    gap: 0.8rem;
+    font-size: 1.2rem;
+  }
+
+  .footerSocialMediaLink {
+    width: 40px;
+    height: 40px;
+  }
+
+  .footerPara {
+    text-align: center;
+  }
+
+  .arrowUp {
+    width: 70px;
+    height: 70px;
+  }
 }

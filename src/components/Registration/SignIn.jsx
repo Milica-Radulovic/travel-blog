@@ -33,7 +33,7 @@ const SignIn = () => {
       <div className="registrationInner">
         <div className="registrationText">
           <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
-            <h2>Sign in to your account</h2>
+            <h2 className="registrationH2">Sign in to your account</h2>
           </Fade>
           <p>
             Don't have an account yet?{" "}

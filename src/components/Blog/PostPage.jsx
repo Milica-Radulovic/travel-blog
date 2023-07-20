@@ -104,11 +104,9 @@ const PostPage = ({ articles }) => {
 
               <div>{user && <LikeArticle id={id} likes={likes} />}</div>
 
-              {/*        {user && user.uid === userId && (
-                <button className="submitButton" onClick={handleDelete}>
-                  Delete
-                </button>
-              )} */}
+              <button className="submitButton" onClick={handleDelete}>
+                Delete
+              </button>
             </>
           )}
 

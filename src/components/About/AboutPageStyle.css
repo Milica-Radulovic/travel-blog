@@ -29,3 +29,40 @@
   display: block;
   margin: auto;
 }
+@media (min-width: 993px) and (max-width: 1500px) {
+  .aboutPageInner {
+    width: 70%;
+  }
+
+  .aboutPageGallery {
+    width: 70%;
+  }
+}
+@media (min-width: 768px) and (max-width: 994px) {
+  .aboutPageInner {
+    width: 80%;
+  }
+
+  .aboutPageGallery {
+    width: 80%;
+  }
+
+  .aboutPageH2 {
+    padding-top: 3rem;
+  }
+}
+@media (max-width: 768px) {
+  .aboutPageInner {
+    width: 90%;
+    padding: 2rem 0.5rem 3rem 0.5rem;
+  }
+
+  .aboutPageGallery {
+    width: 90%;
+  }
+
+  .aboutPageH2 {
+    padding-top: 2rem;
+    font-size: 2.2rem;
+  }
+}

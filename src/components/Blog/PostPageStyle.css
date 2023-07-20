@@ -101,3 +101,7 @@
   height: 200px;
   object-fit: cover;
 }
+@media (min-width: 768px) and (max-width: 994px) {
+}
+@media (max-width: 768px) {
+}
