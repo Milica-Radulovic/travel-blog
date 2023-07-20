@@ -4,6 +4,7 @@ import Logo from "./Logo";
 import { FaUser } from "react-icons/fa";
 import { UserAuth } from "../../context/AuthContext";
 import SearchLayer from "../Blog/SearchLayer";
+import logo from "../../images/logoNav.svg";
 import "./Header.css";
 const Navbar = ({ search, setSearch, articles }) => {
   const { user } = UserAuth();
@@ -15,24 +16,33 @@ const Navbar = ({ search, setSearch, articles }) => {
   };
 
   return (
-    <nav className="navBar">
-      <ul className="navBarList">
-        <Logo />
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="about">About Us</Link>
-        </li>
-        <li>
-          <Link to="blog">Blog</Link>
-        </li>
-        <li>
-          <Link to="contact">Contact</Link>
-        </li>
-        <li>
-          <Link className="search-icon" onClick={handleSearchIconClick}>
-            <i className="fa-solid fa-magnifying-glass"></i>
+    <nav className="navbarContaner">
+      <div className="navbarInner">
+        <div className="navbarLeft">
+          <Link to="/">
+            <img src={logo} style={{ width: "140px" }} />
+          </Link>
+        </div>
+        <div className="navbarMain">
+          {" "}
+          <Link className="navbarMainLink" to="/">
+            <div className="navbarMainDiv">Home</div>
+          </Link>
+          <Link className="navbarMainLink" to="/about">
+            <div className="navbarMainDiv">About Us</div>
+          </Link>
+          <Link className="navbarMainLink" to="/blog">
+            <div className="navbarMainDiv">Blog</div>
+          </Link>
+          <Link className="navbarMainLink" to="/contact">
+            <div className="navbarMainDiv">Contact</div>
+          </Link>
+        </div>
+        <div className="navbarRight">
+          <Link className="navIcon" onClick={handleSearchIconClick}>
+            <div>
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </div>
           </Link>
           {showSearchLayer && (
             <SearchLayer
@@ -42,22 +52,19 @@ const Navbar = ({ search, setSearch, articles }) => {
               articles={articles}
             />
           )}
-        </li>
-        {!user ? (
-          <li>
-            <Link to="/signin">
-              <FaUser />
+          {!user ? (
+            <Link className="navIcon" to="/signin">
+              <div>
+                <FaUser />
+              </div>
             </Link>
-          </li>
-        ) : (
-          <li>
-            <Link to="/account">
-              {" "}
+          ) : (
+            <Link className="navIcon" to="/account">
               <p>{user && user.email} </p>
             </Link>
-          </li>
-        )}
-      </ul>
+          )}
+        </div>
+      </div>
     </nav>
   );
 };

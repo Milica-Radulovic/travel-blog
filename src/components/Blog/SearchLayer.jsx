@@ -21,7 +21,7 @@ const SearchLayer = ({ onClose, search, setSearch, articles }) => {
               Write your own tale...
             </p>
           </div>
-          <h2 style={{ color: "#36565C" }}>Search All Travelers Tales</h2>
+          <h2 style={{ color: "#36565C" }}>Search All Traveler's Tales</h2>
         </Fade>
         <div className="searchLayerWrapper">
           <Search search={search} setSearch={setSearch} />

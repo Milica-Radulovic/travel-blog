@@ -4,7 +4,7 @@ const RecentPostsFeed = ({ articles }) => {
   return (
     <>
       <section className="recentPostsFeed">
-        {articles.slice(0, 20).map((article) => (
+        {articles.slice(0, 16).map((article) => (
           <RecentPost key={article.id} article={article} />
         ))}
       </section>
