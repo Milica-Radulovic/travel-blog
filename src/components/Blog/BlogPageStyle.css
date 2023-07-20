@@ -74,13 +74,12 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 5rem;
+  gap: 3rem;
 }
 
 .blogPageArticle {
-  flex: 25%;
-  width: 25%;
-  display: flex;
+  flex: 30%;
+  width: 30%;
 }
 
 .blogPostLink {
@@ -99,7 +98,7 @@
   transform: translate(-50%);
   background-color: #edeadc;
   color: #36565c;
-  width: 80%;
+  width: 90%;
   padding: 0 1.5rem;
 }
 
@@ -124,3 +123,66 @@
   align-items: center;
   gap: 0.5rem;
 } */
+
+@media (max-width: 800px) {
+  input::file-selector-button {
+    padding: 0.6rem 2rem;
+  }
+}
+
+.submitButton {
+  width: 200px;
+  padding: 1rem 1rem;
+  margin: auto;
+  margin-top: 2rem;
+  background-color: #46666b;
+  border: none;
+  border-radius: 2px;
+  color: #fbfbfc;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.4s linear;
+}
+
+.submitButton:hover {
+  background-color: #edeadc;
+  color: #36565c;
+  border: 1px solid #36565c;
+}
+
+@media (min-width: 993px) and (max-width: 1500px) {
+  .blogPageInner {
+    width: 90%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 994px) {
+  .blogPageInner {
+    width: 90%;
+  }
+}
+@media (max-width: 768px) {
+  .blogPageH2 {
+    margin: 0 1rem;
+    font-size: 2.2rem;
+  }
+
+  .blogPageInner {
+    width: 90%;
+  }
+  .blogPageArticle {
+    flex: 100%;
+    width: 100%;
+  }
+  .blogPageSearch {
+    margin: 0 1rem;
+  }
+  .blogPageArticleText {
+    font-size: 0.8rem;
+  }
+  .blogPageSearchInput {
+    font-size: 1rem;
+    padding: 1rem 0.5rem;
+  }
+}

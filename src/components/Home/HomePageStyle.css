@@ -48,6 +48,16 @@ div.carousel {
   font-size: 2rem;
   color: white;
 }
+@media (min-width: 768px) and (max-width: 994px) {
+  .slideSpan {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 768px) {
+  .slideSpan {
+    font-size: 1.2rem;
+  }
+}
 
 /* About Us */
 .homePageWrapper {
@@ -70,7 +80,7 @@ div.carousel {
 }
 
 .homePageAboutUs {
-  width: 40%;
+  width: 60%;
   margin: auto;
   padding: 5rem 0 2rem 0;
   font-size: 1.4rem;
@@ -114,7 +124,7 @@ div.carousel {
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 5rem;
+  gap: 3rem;
 }
 
 .travelTips {
@@ -131,11 +141,13 @@ div.carousel {
 .travelTipsWrapper {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
   gap: 2rem;
 }
 
 .travelTipsLink {
   border: 1px solid #b4c7bf;
+  flex: 30%;
   width: 30%;
   text-align: center;
   margin-bottom: 5rem;
@@ -147,4 +159,79 @@ div.carousel {
 
 .travelTipsH2 {
   margin: 6rem 0;
+}
+@media (min-width: 993px) and (max-width: 1500px) {
+  .homePageAboutUs {
+    width: 80%;
+
+    padding: 3rem 0 2rem 0;
+    font-size: 1.2rem;
+  }
+  .homePageSection {
+    width: 90%;
+  }
+  .travelTips {
+    width: 90%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 994px) {
+  .homePageAboutUs {
+    width: 80%;
+
+    padding: 3rem 0 2rem 0;
+    font-size: 1.2rem;
+  }
+  .homePageSection {
+    width: 90%;
+  }
+  .travelTips {
+    width: 90%;
+  }
+  .travelTipsLink {
+    padding: 0.5rem;
+  }
+}
+@media (max-width: 768px) {
+  .homePageAboutUs {
+    width: 90%;
+
+    padding: 3rem 0 2rem 0;
+    font-size: 1rem;
+  }
+  .homePageH2 {
+    margin: 0 1rem;
+    font-size: 2.2rem;
+  }
+
+  .homePageSection {
+    width: 90%;
+  }
+  .blogPageArticle {
+    flex: 100%;
+    width: 100%;
+  }
+  .blogPageSearch {
+    margin: 0 1rem;
+  }
+  .blogPageArticleText {
+    font-size: 0.8rem;
+  }
+  .blogPageSearchInput {
+    font-size: 1rem;
+    padding: 1rem 0.5rem;
+  }
+  .travelTipsHeading {
+    font-size: 2.2rem;
+  }
+  .travelTips {
+    width: 90%;
+  }
+  .travelTipsLink {
+    flex: 100%;
+    width: 100%;
+    margin-bottom: 0;
+    font-size: 1rem;
+    padding: 1rem;
+  }
 }

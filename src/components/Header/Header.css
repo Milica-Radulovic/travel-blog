@@ -6,7 +6,9 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
+
 .header {
   color: #e1d4bc;
   background-color: #36565c;
@@ -142,7 +144,7 @@ body {
   box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
   transition: bottom 0.3s ease;
   padding: 20px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .search-layer.active {

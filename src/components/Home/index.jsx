@@ -15,7 +15,7 @@ const Home = ({ articles }) => {
             {" "}
             <div className="homePageAboutUs">
               <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
-                <h2>About Us</h2>
+                <h2 className="homePageH2">About Us</h2>
                 <p>
                   Welcome to{" "}
                   <span style={{ fontSize: "1.6rem", fontWeight: "bold" }}>
@@ -48,7 +48,7 @@ const Home = ({ articles }) => {
           {/* Recent 6 Posts */}
           <section className="homePageRecentPosts">
             <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
-              <h2>Recent Traveler's Tales</h2>
+              <h2 className="homePageH2">Recent Traveler's Tales</h2>
             </Fade>
 
             {/*  <FontAwesomeIcon icon={light("angles-down")} beat /> */}
@@ -74,6 +74,7 @@ const Home = ({ articles }) => {
                 }}
               >
                 <span
+                  className="travelTipsHeading"
                   style={{
                     fontSize: "40px",
                     padding: "0 10px",

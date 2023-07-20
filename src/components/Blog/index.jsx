@@ -12,7 +12,7 @@ const Blog = ({ search, setSearch, articles }) => {
     <main className="blogPageWrapper">
       {/* Blog Title */}
       <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
-        <h2>All Traveler's Tales</h2>
+        <h2 className="blogPageH2">All Traveler's Tales</h2>
       </Fade>
 
       <div className="blogPageButtonAndSearch">
@@ -24,7 +24,7 @@ const Blog = ({ search, setSearch, articles }) => {
         )}
 
         {/* Search Bar */}
-        <div>
+        <div className="blogPageSearch">
           <Search search={search} setSearch={setSearch} />
         </div>
       </div>
