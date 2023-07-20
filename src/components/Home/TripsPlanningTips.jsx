@@ -4,14 +4,34 @@ import "./TripsPlanningTips.css";
 const TripPlanningTips = () => {
   return (
     <div className="backGround">
-      <div className="wrapper">
-        <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
-          <h2 className="title">
-            Planning a trip can be exciting and sometimes overwhelming, but with
-            the right approach, it can be a smooth and enjoyable process. Here
-            are 15 tips for planning a trip anywhere.
-          </h2>
-        </Fade>
+      <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
+        <div
+          className="planningTrip"
+          style={{
+            width: "100%",
+            height: "20px",
+            borderBottom: "0.2px solid #B4C7BF",
+            textAlign: "center",
+          }}
+        >
+          <span
+            style={{
+              fontSize: "40px",
+              padding: "0 10px",
+              backgroundColor: "#EDEADC",
+              color: "#36565C",
+            }}
+          >
+            Planning Your Trip
+          </span>
+        </div>
+      </Fade>
+      <div className="planningWrapper">
+        <h2 className="planning">
+          Planning a trip can be exciting and sometimes overwhelming, but with
+          the right approach, it can be a smooth and enjoyable process. Here are
+          15 tips for planning a trip anywhere.
+        </h2>
       </div>
 
       <ol className="tipsList">
