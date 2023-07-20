@@ -1,0 +1,31 @@
+.aboutPageWrapper {
+  color: #36565c;
+  background-color: #edeadc;
+}
+
+.aboutPageInner {
+  width: 60%;
+  margin: auto;
+  padding: 2rem 3rem 5rem 3rem;
+}
+
+.aboutPageGallery {
+  width: 60%;
+  margin: auto;
+  border-top: 0.2px solid #b4c7bf;
+  padding-bottom: 5rem;
+}
+
+.aboutPageH2 {
+  padding-top: 3rem;
+}
+
+.aboutPagePosts {
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutPageLinkTBP {
+  display: block;
+  margin: auto;
+}
