@@ -96,3 +96,4 @@ const About = ({ articles }) => {
 };
 
 export default About;
+

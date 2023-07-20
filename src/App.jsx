@@ -6,7 +6,7 @@ import Home from "./components/Home/index";
 import TravelList from "./components/Home/TravelList";
 import TopTravelTips from "./components/Home/TopTravelTips";
 import PlanTrip from "./components/Home/PlanTrip";
-import About from "./components/About/index";
+import About from "./components/About/AboutUs";
 import Blog from "./components/Blog/index";
 import NewPost from "./components/Blog/NewPost";
 import PostPage from "./components/Blog/PostPage";
