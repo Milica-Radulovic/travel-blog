@@ -4,10 +4,9 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-  updateProfile,
+  updateProfile as updateFirebaseProfile, // Import the updateProfile function from firebase/auth
 } from "firebase/auth";
-import { auth, storage, db } from "../firebase";
-import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import { auth } from "../firebase";
 
 const UserContext = createContext();
 
@@ -26,6 +25,20 @@ export const AuthContextProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  const updateProfile = async (profileData) => {
+    try {
+      if (auth.currentUser) {
+        // Update user profile in firebase
+        await updateFirebaseProfile(auth.currentUser, profileData);
+
+        // Update the local user state
+        setUser((prevUser) => ({ ...prevUser, ...profileData }));
+      }
+    } catch (error) {
+      console.error("Error updating profile:", error);
+    }
+  };
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser);
@@ -37,7 +50,9 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ createUser, user, logout, signIn }}>
+    <UserContext.Provider
+      value={{ createUser, user, setUser, logout, signIn, updateProfile }}
+    >
       {children}
     </UserContext.Provider>
   );

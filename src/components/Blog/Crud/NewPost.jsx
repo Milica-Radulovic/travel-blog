@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
 import { Timestamp, collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { storage, db } from "../../firebase";
+import { storage, db } from "../../../firebase";
+import { UserAuth } from "../../../context/AuthContext";
 import { toast } from "react-toastify";
 import { Editor } from "@tinymce/tinymce-react";
-import { UserAuth } from "../../context/AuthContext";
 import {
   FaFacebookF,
   FaInstagram,
   FaPinterestP,
   FaTwitter,
 } from "react-icons/fa";
-import logo from "../../images/logo.svg";
+import logo from "../../../images/logo.svg";
 import "./NewPostStyle.css";
 
 const NewPost = () => {
@@ -92,6 +92,7 @@ const NewPost = () => {
             userId: user.uid,
             likes: [],
             comments: [],
+            isApproved: false,
           })
             .then(() => {
               toast("Post added successfully", { type: "success" });
@@ -174,11 +175,14 @@ const NewPost = () => {
         {/* Form Section */}
         <section className="formContainer">
           <div className="newPostForm">
-            <label htmlFor="">Image</label>
+            <label htmlFor="">
+              <span className="required">Add Image *</span>
+            </label>
             <input
               type="file"
               name="image"
               accept="image/*"
+              required
               onChange={(e) => handleImageChange(e)}
             />
 
@@ -193,33 +197,45 @@ const NewPost = () => {
               </div>
             )}
 
-            <label htmlFor="">Title</label>
+            <label htmlFor="">
+              <span className="required">Title *</span>
+            </label>
             <input
               type="text"
               name="title"
+              required
               value={formData.title}
               onChange={(e) => handleChange(e)}
             />
 
-            <label htmlFor="">Author</label>
+            <label htmlFor="">
+              <span className="required">Author *</span>
+            </label>
             <input
               type="text"
               name="author"
+              required
               value={formData.author}
               onChange={(e) => handleChange(e)}
             />
 
-            <label htmlFor="">Description</label>
+            <label htmlFor="">
+              <span className="required">Description *</span>
+            </label>
             <textarea
               rows="10"
               cols="50"
               name="description"
+              required
               value={formData.description}
               onChange={(e) => handleChange(e)}
             ></textarea>
 
-            <label htmlFor="">Body</label>
+            <label htmlFor="">
+              <span className="required">Add Content *</span>
+            </label>
             <Editor
+              required
               textareaName="body"
               apiKey="4302b75eb45ce7c6212f47055d96a6f1b2f2b5af0095c92383e1cba784f571d4" // Replace with your TinyMCE API key
               initialValue="Write your own story..."
@@ -243,15 +259,8 @@ const NewPost = () => {
                 setFormData({ ...formData, body: content });
               }}
             />
-            {/*             <textarea
-              rows="20"
-              cols="50"
-              name="body"
-              value={formData.body}
-              onChange={(e) => handleChange(e)}
-            ></textarea> */}
 
-            <button className="submitButton" onClick={handleSubmit}>
+            <button className="buttonOne" onClick={handleSubmit}>
               Submit
             </button>
           </div>

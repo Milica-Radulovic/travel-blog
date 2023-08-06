@@ -46,12 +46,8 @@ const ItemInput = ({ onAddItems }) => {
             ))}
           </select>
         </div>
-        <button
-          type="submit"
-          className="BtnDone"
-          style={{ width: "4rem", height: "2rem" }}
-        >
-          Add
+        <button type="submit" className="buttonOne">
+          Add to List
         </button>
       </form>
     </div>
@@ -63,7 +59,7 @@ const Item = ({ handleEdit, item, onDelete }) => {
   return (
     <div className="ItemContainer">
       <span className={linethrough}>
-        {item.quantity} {item.name}
+        {item.quantity}. {item.name}
       </span>
       <button className="BtnDone" onClick={() => handleEdit(item.id)}>
         {!item.isDone ? (

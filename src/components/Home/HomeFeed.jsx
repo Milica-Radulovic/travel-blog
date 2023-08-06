@@ -1,4 +1,4 @@
-import BlogPost from "../Blog/BlogPost";
+import BlogPost from "../Blog/BlogPage/BlogPost";
 const HomeFeed = ({ articles }) => {
   return (
     <section id="recentPosts" className="homePageSection">

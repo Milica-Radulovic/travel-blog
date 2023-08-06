@@ -1,37 +1,56 @@
-import React, { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { deleteDoc, doc } from "firebase/firestore";
-import { db, storage } from "../../firebase";
-import { toast } from "react-toastify";
 import { deleteObject, ref } from "firebase/storage";
+import { db, storage } from "../../../firebase";
+import { UserAuth } from "../../../context/AuthContext";
+import { useData } from "../../../context/DataContext";
+import { toast } from "react-toastify";
 import { FaAngleDoubleDown } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
-import { UserAuth } from "../../context/AuthContext";
 import RecentPostsFeed from "./RecentPostsFeed";
-import LikeArticle from "./LikeArticle";
-import logo from "../../images/logo.svg";
+import LikePost from "../Crud/LikePost";
+import Comment from "../Crud/Comment";
+import logo from "../../../images/logo.svg";
 import "./PostPageStyle.css";
 
-const PostPage = ({ articles }) => {
+const PostPage = () => {
+  const { articles, isLoading, deleteArticle } = useData();
   const { user } = UserAuth();
   const navigate = useNavigate();
-  const [likes, setLikes] = useState("");
   const { id } = useParams();
-  const article = articles.find((article) => article.id.toString() === id);
+  const article = articles.find((article) => article.id === id);
+
+  console.log("Articles:", articles);
+  console.log("ID:", id);
+  console.log("Article:", article);
+
+  if (isLoading) {
+    // Render a loading indicator while data is being fetched
+    return <div>Loading...</div>;
+  }
+
+  if (!article) {
+    // Render an appropriate message when the article is not found
+    return <div>Article not found.</div>;
+  }
 
   // handle Delete
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this article?")) {
       try {
         await deleteDoc(doc(db, "Articles", id));
-        toast("Article deleted successfully", { type: "success" });
-        const storageRef = ref(storage, imageUrl);
+        const storageRef = ref(storage, article.imageUrl);
         await deleteObject(storageRef);
+
+        // Call the deleteArticle function to update the state
+        deleteArticle(id);
+
+        toast("Article deleted successfully", { type: "success" });
+        navigate("/blog");
       } catch (error) {
         toast("Error deleting article", { type: "error" });
         console.log(error);
       }
-      navigate("/blog");
     }
   };
 
@@ -66,21 +85,26 @@ const PostPage = ({ articles }) => {
               <img
                 className="postPageImage"
                 src={article.imageUrl}
-                style={{ width: "100%", height: "700px", objectFit: "cover" }}
+                style={{ width: "100%", objectFit: "cover" }}
               />
 
-              {/* Post Author */}
-              <p className="postPageAuthor">
-                {" "}
-                <span
-                  style={{
-                    fontFamily: "'Laila', sans-serif",
-                    fontWeight: "bold",
-                  }}
-                >
-                  Author:{" "}
-                </span>
-                {article.author}
+              {/* Created By */}
+              <p
+                style={{
+                  textDecoration: "underline",
+                }}
+              >
+                {article.createdBy && (
+                  <span
+                    style={{
+                      fontFamily: "'Laila', sans-serif",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Created By:
+                  </span>
+                )}{" "}
+                {article.createdBy}
               </p>
 
               {/* Post Date */}
@@ -102,14 +126,35 @@ const PostPage = ({ articles }) => {
                 dangerouslySetInnerHTML={{ __html: article.body }}
               />
 
-              <div>{user && <LikeArticle id={id} likes={likes} />}</div>
-
-              <button className="submitButton" onClick={handleDelete}>
-                Delete
-              </button>
+              {/* Likes */}
+              {user && <LikePost article={article} />}
+              <div>
+                <p>
+                  {article.likes?.length === 1
+                    ? `${article.likes.length} like`
+                    : `${article.likes?.length} likes`}
+                </p>
+              </div>
             </>
           )}
-
+          {/* Comments */}
+          {user && <Comment article={article} />}
+          {/* Render the Comment component and pass the article as a prop */}
+          {article.comments && article.comments.length > 0 && (
+            <div>
+              <p>
+                {article.comments.length === 1
+                  ? `${article.comments.length} comment`
+                  : `${article.comments.length} comments`}
+              </p>
+            </div>
+          )}
+          {/* Delete Button */}
+          {user && user.uid === article.userId && (
+            <button className="buttonOne postPageButton" onClick={handleDelete}>
+              Delete
+            </button>
+          )}
           {/* Message if there is no Post */}
           {!article && (
             <>
@@ -119,7 +164,7 @@ const PostPage = ({ articles }) => {
           )}
         </article>
 
-        {/* Aside with latest Poss and Link to Blog Page */}
+        {/* Aside with latest Posts and Link to Blog Page */}
         <aside className="postPageAside">
           {/* Link to Blog Page */}
           <div className="postPageLinkToBlog">
@@ -145,7 +190,15 @@ const PostPage = ({ articles }) => {
                   <FaAngleDoubleDown style={{ fontSize: "2rem" }} />
                 </Fade>
                 <br />
-                of Traveler's Tales on our Blog Page
+                of{" "}
+                <span
+                  style={{
+                    fontFamily: "'Laila', sans-serif",
+                  }}
+                >
+                  Traveler's Tales
+                </span>{" "}
+                on our Blog Page
               </Link>
             </div>
           </div>

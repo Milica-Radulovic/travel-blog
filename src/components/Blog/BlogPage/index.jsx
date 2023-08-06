@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
-import { UserAuth } from "../../context/AuthContext";
+import { UserAuth } from "../../../context/AuthContext";
+import { useData } from "../../../context/DataContext";
 import BlogFeed from "./BlogFeed";
-import Search from "./Search";
+import Search from "../../Header/Search/index";
 import "./BlogPageStyle.css";
 
-const Blog = ({ search, setSearch, articles }) => {
+const Blog = () => {
+  const { search, setSearch, articles, isLoading, error } = useData();
   const { user } = UserAuth();
 
   return (
@@ -32,11 +34,25 @@ const Blog = ({ search, setSearch, articles }) => {
       {/* All Posts */}
       <div className="blogPageInner">
         <>
-          {articles.length ? (
-            <BlogFeed articles={articles} />
-          ) : (
-            <p>No Posts to display.</p>
+          {" "}
+          {isLoading && (
+            <p className="statusIsLoading">
+              {" "}
+              <i className="fas fa-spinner fa-pulse"></i>
+            </p>
           )}
+          {!isLoading && error && (
+            <p className="statusMsg" style={{ color: "red" }}>
+              {error}
+            </p>
+          )}
+          {!isLoading &&
+            !error &&
+            (articles.length ? (
+              <BlogFeed articles={articles} />
+            ) : (
+              <p className="statusMsg">No Posts to display.</p>
+            ))}
         </>
       </div>
     </main>

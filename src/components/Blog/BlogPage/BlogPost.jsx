@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
+import { UserAuth } from "../../../context/AuthContext";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
 import "./BlogPageStyle.css";
 
 const BlogPost = ({ article }) => {
+  const { user } = UserAuth();
+
   return (
     /* Blog Article */
     <article className="blogPageArticle">
@@ -19,17 +22,31 @@ const BlogPost = ({ article }) => {
           }}
         />
 
-        {/* Post Text */}
+        {/* Post Text Card*/}
         <div className="blogPageArticleText">
           {/* Post Title */}
           <h2 className="blogPageTitle">
-            {article.title.length <= 40
+            {article.title.length <= 25
               ? article.title
-              : `${article.title.slice(0, 40)}...`}
+              : `${article.title.slice(0, 25)}...`}
           </h2>
 
-          {/* Pot Author */}
-          <p className="blogPageAuthor">
+          <p>
+            {article.createdBy && (
+              <span
+                style={{
+                  fontFamily: "'Laila', sans-serif",
+                  fontWeight: "bold",
+                }}
+              >
+                Created By:
+              </span>
+            )}{" "}
+            {article.createdBy}
+          </p>
+
+          {/* Post Author */}
+          {/*           <p className="blogPageAuthor">
             <span
               style={{
                 fontFamily: "'Laila', sans-serif",
@@ -39,7 +56,7 @@ const BlogPost = ({ article }) => {
               Author:{" "}
             </span>
             {article.author}
-          </p>
+          </p> */}
 
           {/* Post Date */}
           <p>

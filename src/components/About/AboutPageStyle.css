@@ -1,18 +1,19 @@
 .aboutPageWrapper {
-  color: #36565c;
-  background-color: #edeadc;
+  width: 100%;
+  color: var(--fontColorDark);
+  background-color: var(--backgroundColorLight);
 }
 
 .aboutPageInner {
-  width: 60%;
+  width: 70%;
   margin: auto;
   padding: 2rem 3rem 5rem 3rem;
 }
 
 .aboutPageGallery {
-  width: 60%;
+  width: 70%;
   margin: auto;
-  border-top: 0.2px solid #b4c7bf;
+  border-top: 0.2px solid var(--formBorderColor);
   padding-bottom: 5rem;
 }
 
@@ -29,40 +30,49 @@
   display: block;
   margin: auto;
 }
+
 @media (min-width: 993px) and (max-width: 1500px) {
   .aboutPageInner {
-    width: 70%;
+    width: 80%;
   }
-
   .aboutPageGallery {
-    width: 70%;
+    width: 80%;
   }
 }
-@media (min-width: 768px) and (max-width: 994px) {
+
+@media (min-width: 769px) and (max-width: 992px) {
   .aboutPageInner {
-    width: 80%;
+    width: 85%;
   }
-
   .aboutPageGallery {
-    width: 80%;
+    width: 85%;
   }
-
   .aboutPageH2 {
     padding-top: 3rem;
   }
 }
-@media (max-width: 768px) {
+
+@media (min-width: 577px) and (max-width: 768px) {
   .aboutPageInner {
     width: 90%;
     padding: 2rem 0.5rem 3rem 0.5rem;
   }
-
   .aboutPageGallery {
     width: 90%;
+    padding-bottom: 3rem;
   }
+}
 
+@media (max-width: 576px) {
+  .aboutPageInner {
+    width: 90%;
+    padding: 1rem 0.5rem 3rem 0.5rem;
+  }
+  .aboutPageGallery {
+    width: 90%;
+    padding-bottom: 3rem;
+  }
   .aboutPageH2 {
     padding-top: 2rem;
-    font-size: 2.2rem;
   }
 }

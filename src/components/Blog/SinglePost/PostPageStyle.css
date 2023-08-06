@@ -1,0 +1,181 @@
+.postPageWrappe {
+  background-color: white;
+  color: var(--navBackgroundColor);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.postPageInner {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  margin: 6rem 0;
+  border-top: 0.2px solid var(--formBorderColor);
+}
+
+.postPageArticle {
+  flex: 70%;
+  width: 70%;
+}
+
+.postPageAside {
+  flex: 30%;
+  width: 30%;
+  border-left: 0.2px solid var(--formBorderColor);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.postPageTitle {
+  padding-top: 2rem;
+}
+
+.postPageDescription {
+  width: 80%;
+  margin: auto;
+  padding: 1rem 0 2rem 0;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.postPageImage {
+  width: 90%;
+}
+
+.postPageAuthor {
+  text-decoration: underline;
+}
+
+.postPageDate {
+  text-decoration: underline;
+}
+
+.postPageButton {
+  display: block;
+  margin: auto;
+}
+
+.postPageLinkToBlog {
+  width: 100%;
+  height: 300px;
+  background-color: var(--formBorderColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.postPageLinkToBlogInner {
+  margin: 0;
+  padding: 0;
+  width: 60%;
+  height: fit-content;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  text-align: center;
+}
+
+.linkToBlogPage {
+  text-decoration: none;
+  color: var(--navBackgroundColor);
+}
+
+.recentPostsFeed {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  line-height: 0;
+  gap: 2rem;
+  padding-top: 2rem;
+}
+
+.recentPost {
+  flex: 45%;
+  width: 45%;
+}
+
+.recentPostImage {
+  height: 200px;
+  object-fit: cover;
+}
+
+@media (min-width: 1501px) and (max-width: 1700px) {
+  .postPageInner {
+    width: 90%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1500px) {
+  .postPageWrappe {
+    font-size: 1rem;
+  }
+  .postPageInner {
+    width: 90%;
+    gap: 2rem;
+  }
+  .postPageArticle {
+    flex: 60%;
+    width: 60%;
+  }
+  .postPageDescription {
+    font-size: 1.2rem;
+  }
+  .postPageAside {
+    flex: 40%;
+    width: 40%;
+  }
+  .postPageLinkToBlog {
+    background-color: white;
+    border: 1px solid var(--formBorderColor);
+  }
+  .postPageLinkToBlogInner {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .postPageWrappe {
+    font-size: 1rem;
+  }
+  .postPageInner {
+    width: 90%;
+    flex-direction: column;
+    margin: 3rem 0;
+  }
+  .postPageArticle {
+    flex: 100%;
+    width: 100%;
+  }
+  .postPageDescription {
+    font-size: 1rem;
+  }
+  .postPageAside {
+    flex: 100%;
+    width: 100%;
+    border-left: none;
+    padding: 0rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .postPageLinkToBlog {
+    width: 100%;
+    margin: auto;
+  }
+  .recentPostsFeed {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    line-height: 0;
+    gap: 0.5rem;
+    padding-top: 2rem;
+  }
+}

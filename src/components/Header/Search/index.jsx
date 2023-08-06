@@ -1,6 +1,9 @@
-import "./BlogPageStyle.css";
+import { useData } from "../../../context/DataContext";
+import "../../Blog/BlogPage/BlogPageStyle.css";
 
-const Search = ({ search, setSearch }) => {
+const Search = () => {
+  const { search, setSearch } = useData();
+
   return (
     <form className="blogPageSearchForm" onSubmit={(e) => e.preventDefault()}>
       <label className="blogPageSearchLabel" htmlFor="search">

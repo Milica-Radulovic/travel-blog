@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Slide from "./Slide";
+import "../HomePageStyle.css";
 
 const Carousel = () => {
   const [index, setIndex] = useState(0);

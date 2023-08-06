@@ -1,32 +1,15 @@
-import { Link } from "react-router-dom";
-import Logo from "./Logo";
+import { useData } from "../../context/DataContext";
+import Navbar from "./Navbar";
+import "./HeaderStyle.css";
 
-const Navbar = () => {
+const Header = () => {
+  const { articles, search, setSearch } = useData();
+
   return (
-    <nav className="navBar">
-      <ul className="navBarList">
-        <Logo />
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="aboutUs">About Us</Link>
-        </li>
-        <li>
-          <Link to="blog">Blog</Link>
-        </li>
-        <li>
-          <Link to="contact">Contact</Link>
-        </li>
-        <li>
-          <Link to="/signin">SignIn</Link>
-        </li>
-        <li>
-          <Link to="/signup">SignUp</Link>
-        </li>
-      </ul>
-    </nav>
+    <header className="header">
+      <Navbar />
+    </header>
   );
 };
 
-export default Navbar;
+export default Header;

@@ -1,4 +1,4 @@
-const LikeArticle = () => {
+const LoadingPosts = () => {
   return (
     <div>
       <i className="fa-regular fa-heart"></i>
@@ -6,4 +6,4 @@ const LikeArticle = () => {
   );
 };
 
-export default LikeArticle;
+export default LoadingPosts;

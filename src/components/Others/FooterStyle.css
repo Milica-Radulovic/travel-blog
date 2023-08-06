@@ -1,7 +1,8 @@
 /* Footer */
+
 .footer {
   font-family: "Ysabeau SC", sans-serif;
-  background-color: #46666b;
+  background-color: var(--bodyBackgroundColor);
   height: 300px;
   display: flex;
   flex-direction: column;
@@ -12,7 +13,7 @@
 }
 
 h3 {
-  color: #edeadc;
+  color: var(--fontColorLight);
   font-size: 1.4rem;
   font-weight: 300;
   padding-top: 1rem;
@@ -24,7 +25,7 @@ h3 {
 }
 
 .linkToPage {
-  color: #edeadc;
+  color: var(--fontColorLight);
   transition: all 0.4s linear;
 }
 
@@ -45,24 +46,24 @@ h3 {
   width: 50px;
   height: 50px;
   border-radius: 100%;
-  background-color: #edeadc;
-  color: #46666b;
+  background-color: var(--backgroundColorLight);
+  color: var(--navBackgroundColor);
   transition: all 0.4s linear;
 }
 
 .footerSocialMediaLink:hover {
-  color: #edeadc;
-  background-color: #46666b;
+  color: var(--fontColorLight);
+  background-color: var(--navBackgroundColor);
 }
 
 .footerPara {
-  color: #edeadc;
+  color: var(--fontColorLight);
 }
 
 .arrowUp {
   width: 80px;
   height: 80px;
-  background-color: #31474b;
+  background-color: var(--navBackgroundColor);
   border-radius: 100%;
   position: fixed;
   right: 1rem;
@@ -73,43 +74,16 @@ h3 {
 }
 
 .iconArrowUp {
-  color: #edeadc;
+  color: var(--fontColorLight);
 }
 
-@media (max-width: 800px) {
-  input::file-selector-button {
-    padding: 0.6rem 2rem;
-  }
-}
-
-.submitButton {
-  width: 200px;
-  padding: 1rem 1rem;
-  margin: auto;
-  margin-top: 2rem;
-  background-color: #46666b;
-  border: none;
-  border-radius: 2px;
-  color: #fbfbfc;
-  font-size: 1.2rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.4s linear;
-}
-
-.submitButton:hover {
-  background-color: #edeadc;
-  color: #36565c;
-  border: 1px solid #36565c;
-}
-
-@media (min-width: 576) and (max-width: 768px) {
+@media (min-width: 577px) and (max-width: 768px) {
 }
 
 @media (max-width: 576px) {
   .footer {
     padding: 0.8rem;
-    height: 350px;
+    height: 320px;
     gap: 1rem;
     justify-content: flex-start;
   }
@@ -117,27 +91,24 @@ h3 {
     font-size: 1.2rem;
     padding-top: 0;
   }
-
   .footerLinksToPages {
     gap: 0.8rem;
   }
-
   .footerSoialMediaLinksContainer {
     gap: 0.8rem;
     font-size: 1.2rem;
   }
-
   .footerSocialMediaLink {
     width: 40px;
     height: 40px;
   }
-
   .footerPara {
     text-align: center;
   }
-
   .arrowUp {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
+    right: 0.5rem;
+    bottom: 0.5rem;
   }
 }

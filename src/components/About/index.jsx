@@ -1,22 +1,30 @@
 import { Link } from "react-router-dom";
-import "./AboutPageStyle.css";
-import logo from "../../images/logo.svg";
+import { useData } from "../../context/DataContext";
 import { Fade } from "react-awesome-reveal";
-import RecentPostsFeed from "../Blog/RecentPostsFeed";
+import logo from "../../images/logo.svg";
+import RecentPostsFeed from "../Blog/SinglePost/RecentPostsFeed";
+import "./AboutPageStyle.css";
 
-const About = ({ articles }) => {
+const About = () => {
+  const { articles } = useData();
+
   return (
     <main className="aboutPageWrapper">
       <div className="aboutPageInner">
+        {/* Logo */}
         <div className="logo">
           <img src={logo} style={{ width: "200px" }} />
           <p className="logoText">Write your own tale...</p>
         </div>
+
+        {/* Heading 2 */}
         <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
           <h2 className="aboutPageH2">
-            Welcome to Traveler's Tales, where wanderlust meets storytelling!
+            Welcome to Traveler's Tales , where wanderlust meets storytelling!
           </h2>
         </Fade>
+
+        {/* Text */}
         <p>
           We are not just a travel blog; we are a vibrant community of
           adventurous souls who are passionate about exploring the beauty of our
@@ -72,11 +80,16 @@ const About = ({ articles }) => {
           inspiration and wonder at Traveler's Tales.
         </p>
       </div>
+
+      {/* Recent Posts Gallery */}
       <div className="aboutPageGallery">
         <div className="aboutPagePosts">
+          {/* Heading 2 */}
           <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
-            <h2 className="aboutPageH2">Our Recent Travelers Tales</h2>
+            <h2 className="aboutPageH2">Our Recent Traveler's Tales</h2>
           </Fade>
+
+          {/* Recent Posts Feed Component */}
           <Fade
             delay={1e2}
             cascade
@@ -86,8 +99,10 @@ const About = ({ articles }) => {
           >
             <RecentPostsFeed articles={articles} />
           </Fade>
+
+          {/* Link to Blog Page */}
           <Link className="aboutPageLinkTBP" to="/blog">
-            <button className="submitButton"> See more</button>
+            <button className="buttonOne"> See more</button>
           </Link>
         </div>
       </div>
