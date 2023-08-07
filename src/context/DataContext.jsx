@@ -4,6 +4,7 @@ import { db } from "../firebase";
 
 const DataContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 const DataContextProvider = ({ children }) => {
   const [articles, setArticles] = useState([]);
   const [search, setSearch] = useState("");

@@ -5,17 +5,19 @@ import {
   updateDoc,
   onSnapshot,
 } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { UserAuth } from "../../../context/AuthContext";
 import { useData } from "../../../context/DataContext";
 import { v4 as uuidv4 } from "uuid";
 import { db } from "../../../firebase";
 
+// eslint-disable-next-line react/prop-types
 export default function Comment({ article }) {
   const { user } = UserAuth();
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
 
+  // eslint-disable-next-line react/prop-types
   const commentRef = doc(db, "Articles", article.id);
 
   useEffect(() => {
