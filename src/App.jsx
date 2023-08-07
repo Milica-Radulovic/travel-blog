@@ -7,6 +7,7 @@ import Missing from "./components/Others/Missing";
 import Home from "./components/Home/index";
 import TravelList from "./components/Home/Travel/TravelList";
 import PlanYourTrip from "./components/Home/Travel/PlanYourTrip";
+import TopTips from "./components/Home/Travel/TopTips";
 import About from "./components/About/index";
 import Blog from "./components/Blog/BlogPage/index";
 import NewPost from "./components/Blog/Crud/NewPost";
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/travelList" element={<TravelList />} />
             <Route path="/planYourTrip" element={<PlanYourTrip />} />
+            <Route path="/topTips" element={<TopTips />} />
             <Route path="about" element={<About />} />
             <Route path="blog" element={<Blog />} />
             <Route path="article" element={<NewPost />} />
