@@ -8,11 +8,9 @@ const ItemInput = ({ onAddItems }) => {
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
     };
-
     const handleSelectChange = (e) => {
         setSelected(Number(e.target.value));
     };
-
     const handleFormSubmit = (e) => {
         e.preventDefault();
         if (!inputValue) return;
@@ -129,7 +127,9 @@ const TravelList = () => {
     const [items, setItems] = useState([]);
     useEffect(() => {
         const storedItems = JSON.parse(localStorage.getItem("listItems"));
-        setItems(storedItems);
+        if (storedItems) {
+            setItems(storedItems);
+        }
     }, []);
     const saveItemsToLocalStorage = (items) => {
         localStorage.setItem("listItems", JSON.stringify(items));
@@ -142,6 +142,7 @@ const TravelList = () => {
             isDone: false,
         };
         setItems([...items, newItem]);
+        saveItemsToLocalStorage([...items, newItem]);
     };
 
     const handleEditItems = (id) => {
@@ -151,16 +152,12 @@ const TravelList = () => {
             )
         );
     };
-    useEffect(() => {
-        saveItemsToLocalStorage(items);
-    }, [items]);
     const toDo = items.filter((item) => !item.isDone);
     const done = items.filter((item) => item.isDone);
 
     const handleDeleteItems = (id) => {
         setItems(items.filter((item) => item.id !== id));
     };
-
     return (
         <div className="travelListBox">
             <ItemInput onAddItems={handleAddItems} />
