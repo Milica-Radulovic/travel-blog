@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { AuthContextProvider } from "./context/AuthContext";
 import { DataContextProvider } from "./context/DataContext";
 import Header from "./components/Header/index";
@@ -18,6 +18,17 @@ import SignUp from "./components/Registration/SignUp";
 import AccountPage from "./components/Registration/AccountPage";
 import ProtectedRoute from "./components/Registration/ProtectedRoute";
 import UserProfile from "./components/Registration/UserProfile";
+import { useEffect } from "react";
+
+const ScrollToTop = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [location]);
+
+  return null;
+};
 
 const App = () => {
   return (
@@ -25,6 +36,7 @@ const App = () => {
       <DataContextProvider>
         <AuthContextProvider>
           <Header />
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/travelList" element={<TravelList />} />
