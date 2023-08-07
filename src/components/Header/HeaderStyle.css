@@ -2,6 +2,7 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -25,6 +26,7 @@ body {
   border-radius: 10px;
   margin: 1rem 0;
 }
+
 .navbarInner {
   width: 100%;
   display: flex;
@@ -48,6 +50,7 @@ body {
   height: 100px;
   align-items: center;
 }
+
 .navbarMainLink {
   flex: 10%;
   width: 10%;
@@ -58,11 +61,11 @@ body {
   cursor: pointer;
   text-decoration: none;
 }
+
 .navbarMainLink:first-child {
   border-left: 1px solid #31474b; /* Add a side border between the links */
 }
-.navbarMainLink {
-}
+
 .navbarRight {
   flex: 25%;
   width: 25%;
@@ -72,6 +75,7 @@ body {
   gap: 1rem;
   font-size: 1.4rem;
 }
+
 .navIcon {
   width: 60px;
   height: 60px;
@@ -82,12 +86,15 @@ body {
   align-items: center;
   color: #36565c;
 }
+
 .navbarHamburger {
   display: none;
 }
+
 .extendedNavbar {
   display: none;
 }
+
 @media (min-width: 901px) and (max-width: 994px) {
   .navbarLeft {
     padding-left: 2rem;
@@ -96,6 +103,7 @@ body {
     padding-right: 2rem;
   }
 }
+
 @media (max-width: 900px) {
   .navbarLeft {
     padding-left: 0rem;
@@ -117,7 +125,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-
     padding: 2rem;
     padding-top: 6rem;
     width: 80%;
@@ -131,7 +138,7 @@ body {
     right: 0px;
     opacity: 1;
     transition: all 0.5s ease;
-    z-index: 1;
+    z-index: 99999;
   }
   .extendedNavbarMainLink {
     color: #e1d4bc;
@@ -139,21 +146,19 @@ body {
     text-decoration: none;
     border-bottom: 1px solid #31474b;
   }
-  .extendedNavbarAnimation {
-    z-index: 1;
-  }
 }
 
 .mainLogo {
   font-size: 2.5rem;
   cursor: pointer;
 }
+
 .mainLogo:hover {
   color: azure;
 }
+
 .navBar {
   display: flex;
-
   margin-top: 1%;
   margin-bottom: 1rem;
   width: 100%;
@@ -162,36 +167,13 @@ body {
   background-color: #36565c;
   box-shadow: -1px 4px 5px -4px rgba(0, 0, 0, 0.77);
 }
+
 .navBarList {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   list-style-type: none;
   width: 100%;
-}
-.navBarList > li {
-  color: #e1d4bc;
-  border-right: 1px solid #31474b;
-  padding-right: 4rem;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
-  /* margin: 1rem; */
-}
-.navBarList > li:first-child {
-  border: none;
-}
-.navBarList > li:last-child {
-  border: none;
-  /* padding: none; */
-}
-.navBarList > li > a {
-  color: #e1d4bc;
-  border-radius: 10px;
-  cursor: pointer;
-  text-decoration: none;
-}
-.navBarList > li > a:hover {
-  color: azure;
 }
 
 /* Search Layer */

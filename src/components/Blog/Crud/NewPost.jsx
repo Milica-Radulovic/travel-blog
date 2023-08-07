@@ -95,11 +95,11 @@ const NewPost = () => {
             isApproved: false,
           })
             .then(() => {
-              toast("Post added successfully", { type: "success" });
+              toast("Post added successfully.", { type: "success" });
               setProgress(0);
             })
             .catch((err) => {
-              toast("Error adding post", { type: "error" });
+              toast("Error adding post.", { type: "error" });
             });
           navigate("/blog");
         });

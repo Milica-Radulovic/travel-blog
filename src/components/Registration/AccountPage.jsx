@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 import { Fade } from "react-awesome-reveal";
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
@@ -12,10 +13,11 @@ const AccountPage = () => {
   const handleLogout = async () => {
     try {
       await logout();
+      toast("You have logged out successfully.", { type: "success" });
       navigate("/signin");
-      console.log("You are logged out");
-    } catch (e) {
+    } catch (err) {
       console.log(e.message);
+      toast(err.message, { type: "error" });
     }
   };
 
