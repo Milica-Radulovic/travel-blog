@@ -58,6 +58,9 @@ body {
   cursor: pointer;
   text-decoration: none;
 }
+.navbarMainLink:hover {
+  color: #f5f2ec;
+}
 .navbarMainLink:first-child {
   border-left: 1px solid #31474b; /* Add a side border between the links */
 }
