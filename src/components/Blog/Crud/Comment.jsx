@@ -10,6 +10,7 @@ import { UserAuth } from "../../../context/AuthContext";
 import { useData } from "../../../context/DataContext";
 import { v4 as uuidv4 } from "uuid";
 import { db } from "../../../firebase";
+import { toast } from "react-toastify";
 
 export default function Comment({ article }) {
   const { user } = UserAuth();
@@ -44,9 +45,14 @@ export default function Comment({ article }) {
         createdAt: new Date(),
         commentId: uuidv4(),
       }),
-    }).then(() => {
-      setComment("");
-    });
+    })
+      .then(() => {
+        toast("Comment added successfully.", { type: "success" });
+        setComment("");
+      })
+      .catch((err) => {
+        toast("Error adding comment.", { type: "error" });
+      });
   };
 
   // handle Delete Comment
@@ -55,9 +61,9 @@ export default function Comment({ article }) {
       await updateDoc(commentRef, {
         comments: arrayRemove(comments.find((c) => c.commentId === commentId)),
       });
-      console.log("Comment deleted successfully");
-    } catch (error) {
-      console.log("Error deleting comment", error);
+      toast("Comment deleted successfully.", { type: "success" });
+    } catch (err) {
+      toast("Error deleting comment.", { type: "error" });
     }
   };
 
@@ -109,7 +115,7 @@ export default function Comment({ article }) {
               <div>
                 <small>Added on: {createdAt.toDate().toLocaleString()}</small>
               </div>
-              {user && user.uid === commentUser && (
+              {user && user.uid === article.userId && (
                 <div className="commentDelete">
                   <i
                     className="fa fa-times"

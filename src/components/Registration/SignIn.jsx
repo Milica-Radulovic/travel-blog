@@ -19,12 +19,11 @@ const SignIn = () => {
     setError("");
     try {
       await signIn(email, password);
-      toast("Logged in successfully", { type: "success" });
+      toast("You have logged in successfully.", { type: "success" });
       navigate("/account");
-    } catch (e) {
-      setError(e.message);
-      toast("Error, please try again", { type: "error" });
-      console.log(e.message);
+    } catch (err) {
+      setError(err.message);
+      toast(err.message, { type: "error" });
     }
   };
 

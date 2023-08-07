@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 import { Fade } from "react-awesome-reveal";
 import logo from "../../images/logo.svg";
 
@@ -17,10 +18,13 @@ const SignUp = () => {
     setError("");
     try {
       await createUser(email, password);
+      toast("Congratulations! You have signed up successfully.", {
+        type: "success",
+      });
       navigate("/account");
-    } catch (error) {
-      setError(e.message);
-      console.log(e.message);
+    } catch (err) {
+      setError(err.message);
+      toast(err.message, { type: "error" });
     }
   };
 

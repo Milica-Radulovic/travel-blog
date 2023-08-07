@@ -45,10 +45,10 @@ const PostPage = () => {
         // Call the deleteArticle function to update the state
         deleteArticle(id);
 
-        toast("Article deleted successfully", { type: "success" });
+        toast("Post deleted successfully.", { type: "success" });
         navigate("/blog");
       } catch (error) {
-        toast("Error deleting article", { type: "error" });
+        toast("Error deleting post.", { type: "error" });
         console.log(error);
       }
     }
@@ -138,7 +138,7 @@ const PostPage = () => {
             </>
           )}
           {/* Comments */}
-          {user && <Comment article={article} />}
+          <Comment article={article} />
           {/* Render the Comment component and pass the article as a prop */}
           {article.comments && article.comments.length > 0 && (
             <div>

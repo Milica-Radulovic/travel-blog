@@ -6,7 +6,7 @@ import { db } from "../../../firebase";
 export default function LikeArticle({ article }) {
   const { articles } = useData();
   const { user } = UserAuth();
-  console.log(article.id);
+  console.log(user.uid);
 
   const likesRef = doc(db, "Articles", article.id);
 
