@@ -1,24 +1,17 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 import { Fade } from "react-awesome-reveal";
 import logo from "../../images/logo.svg";
-import { toast } from "react-toastify";
 
-/* import React, { useState } from "react";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../../firebase";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
- */
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
   const [error, setError] = useState("");
   const { createUser } = UserAuth();
   const navigate = useNavigate();
 
+  // handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -28,27 +21,18 @@ const SignUp = () => {
     } catch (error) {
       setError(e.message);
       console.log(e.message);
-      toast(error.code, { type: "error" });
     }
   };
 
-  /*  const handleSubmit = async () => {
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      updateProfile(auth.currentUser, { displayName: name });
-      navigate("/");
-    } catch (error) {
-      toast(error.code, { type: "error" });
-    }
-  }; */
-
   return (
     <main className="registartionWrapper">
+      {/* Logo */}
       <span className="registrationLogo">
         <img src={logo} style={{ width: "200px" }} />
         <p className="logoText">Write your own tale...</p>
       </span>
       <div className="registrationInner">
+        {/* Text */}
         <div className="registrationText">
           <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
             <h2>Sign up for a free account</h2>
@@ -60,20 +44,29 @@ const SignUp = () => {
             </Link>
           </p>
         </div>
+
+        {/* Form */}
         <form className="registrationForm" onSubmit={handleSubmit}>
-          {/*        <label>Name</label>
-          <input type="text" onChange={(e) => setName(e.target.value)} /> */}
+          <label>
+            <span className="required">Email Address *</span>
+          </label>
+          <input
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-          <label>Email Address</label>
-          <input type="email" onChange={(e) => setEmail(e.target.value)} />
-
-          <label>Password</label>
+          <label>
+            <span className="required">Password *</span>
+          </label>
           <input
             type="password"
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
 
-          <button className="submitButton">Sign Up</button>
+          {/* Button */}
+          <button className="buttonOne">Sign Up</button>
         </form>
       </div>
     </main>

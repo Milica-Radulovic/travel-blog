@@ -7,7 +7,7 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import logo from "../../images/logo.svg";
-import "../Blog/NewPostStyle.css";
+import "../Blog/Crud/NewPostStyle.css";
 
 const Contact = () => {
   return (
@@ -61,16 +61,24 @@ const Contact = () => {
         {/* Form Section */}
         <section className="formContainer">
           <form className="newPostForm">
-            <label htmlFor="fName">First Name:</label>
+            <label htmlFor="fName">
+              <span className="required">First Name *</span>
+            </label>
             <input id="fName" type="text" name="fName" required />
 
-            <label htmlFor="lName">Last Name:</label>
+            <label htmlFor="lName">
+              <span className="required">Last Name *</span>
+            </label>
             <input id="lName" type="text" name="lName" required />
 
-            <label htmlFor="email">Email address:</label>
+            <label htmlFor="email">
+              <span className="required">Email Address *</span>
+            </label>
             <input id="email" type="email" name="email" required />
 
-            <label htmlFor="message">Your message:</label>
+            <label htmlFor="message">
+              <span className="required">Your Message *</span>
+            </label>
             <textarea
               rows="14"
               cols="50"
@@ -79,7 +87,7 @@ const Contact = () => {
               required
             />
 
-            <button className="submitButton" type="submit">
+            <button className="buttonOne" type="submit">
               Submit
             </button>
           </form>

@@ -1,7 +1,7 @@
 .blogPageWrapper {
   font-family: "Ysabeau SC", sans-serif;
   background-color: white;
-  color: #36565c;
+  color: var(--fontColorDark);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,10 +21,10 @@
   text-decoration: none;
   width: fit-content;
   padding: 1rem 2rem;
-  background-color: #46666b;
-  border: 1px solid #46666b;
+  background-color: var(--bodyBackgroundColor);
+  border: 1px solid var(--bodyBackgroundColor);
   border-radius: 2px;
-  color: #fbfbfc;
+  color: var(--formOnFocusBackground);
   font-size: 1.5rem;
   font-weight: 500;
   cursor: pointer;
@@ -32,10 +32,11 @@
 }
 
 .blogPageButtonLink:hover {
-  background-color: #fbfbfc;
-  color: #46666b;
+  background-color: var(--formOnFocusBackground);
+  color: var(--bodyBackgroundColor);
 }
 
+/* Search form style */
 .blogPageSearchForm {
   display: flex;
 }
@@ -50,7 +51,7 @@
   width: 30%;
   min-height: 40px;
   font-size: 1.2rem;
-  border: 1px solid#B4C7BF;
+  border: 1px solid var(--formBorderColor);
   border-radius: 2px;
   font-size: 1.4rem;
   padding: 1rem 0.5rem;
@@ -58,13 +59,15 @@
 
 .blogPageSearchInput::placeholder {
   font-family: "Ysabeau SC", sans-serif;
+  color: var(--fontColorDark);
 }
 
 .blogPageSearchInput:focus {
-  outline: 1px solid #688387;
-  background-color: #fbfbfc;
+  outline: 1px solid var(--formOnFocusOutline);
+  background-color: var(--formOnFocusBackground);
 }
 
+/* Blog posts section */
 .blogPageInner {
   width: 80%;
   margin: auto;
@@ -86,9 +89,6 @@
   text-decoration: none;
 }
 
-.blogPageImage {
-}
-
 .blogPageArticleText {
   display: flex;
   flex-direction: column;
@@ -96,8 +96,8 @@
   position: relative;
   left: 50%;
   transform: translate(-50%);
-  background-color: #edeadc;
-  color: #36565c;
+  background-color: var(--backgroundColorLight);
+  color: var(--fontColorDark);
   width: 90%;
   padding: 0 1.5rem;
 }
@@ -118,56 +118,47 @@
   gap: 0.5rem;
 }
 
-/* .blogPageDMFade {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-} */
-
-@media (max-width: 800px) {
-  input::file-selector-button {
-    padding: 0.6rem 2rem;
-  }
-}
-
-.submitButton {
-  width: 200px;
-  padding: 1rem 1rem;
-  margin: auto;
-  margin-top: 2rem;
-  background-color: #46666b;
-  border: none;
-  border-radius: 2px;
-  color: #fbfbfc;
-  font-size: 1.2rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.4s linear;
-}
-
-.submitButton:hover {
-  background-color: #edeadc;
-  color: #36565c;
-  border: 1px solid #36565c;
-}
-
 @media (min-width: 993px) and (max-width: 1500px) {
   .blogPageInner {
     width: 90%;
   }
 }
 
-@media (min-width: 768px) and (max-width: 994px) {
+@media (min-width: 577px) and (max-width: 992px) {
+  .blogPageH2 {
+    margin: 0 1rem 1.5rem 1rem;
+  }
+  .blogPageButtonAndSearch {
+    flex-direction: column;
+    gap: 1rem;
+  }
   .blogPageInner {
     width: 90%;
   }
 }
-@media (max-width: 768px) {
-  .blogPageH2 {
-    margin: 0 1rem;
-    font-size: 2.2rem;
-  }
 
+@media (max-width: 576px) {
+  .blogPageH2 {
+    margin: 0 1rem 1.5rem 1rem;
+  }
+  .blogPageButtonAndSearch {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .blogPageButtonLink {
+    width: 90%;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    font-weight: 300;
+    text-align: center;
+  }
+  .blogPageSearch {
+    margin: 0 1rem;
+  }
+  .blogPageSearchInput {
+    font-size: 1rem;
+    padding: 1rem 0.5rem;
+  }
   .blogPageInner {
     width: 90%;
   }
@@ -175,14 +166,7 @@
     flex: 100%;
     width: 100%;
   }
-  .blogPageSearch {
-    margin: 0 1rem;
-  }
   .blogPageArticleText {
     font-size: 0.8rem;
-  }
-  .blogPageSearchInput {
-    font-size: 1rem;
-    padding: 1rem 0.5rem;
   }
 }

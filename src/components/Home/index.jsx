@@ -1,10 +1,13 @@
+import { useData } from "../../context/DataContext";
 import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
-import CarouselPage from "./Carousel";
+import CarouselPage from "./HeroSection/Carousel";
 import HomeFeed from "./HomeFeed";
 import "./HomePageStyle.css";
 
-const Home = ({ articles }) => {
+const Home = () => {
+  const { articles } = useData();
+
   return (
     <>
       <CarouselPage />
@@ -18,7 +21,7 @@ const Home = ({ articles }) => {
                 <h2 className="homePageH2">About Us</h2>
                 <p>
                   Welcome to{" "}
-                  <span style={{ fontSize: "1.6rem", fontWeight: "bold" }}>
+                  <span style={{ fontFamily: "'Laila', sans-serif" }}>
                     Traveler's Tales
                   </span>
                   , a vibrant travel blog led by our dedicated team of members
@@ -64,26 +67,8 @@ const Home = ({ articles }) => {
           <section className="travelTips">
             {/* Title */}
             <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
-              <div
-                className="travelTipsH2"
-                style={{
-                  width: "100%",
-                  height: "20px",
-                  borderBottom: "0.2px solid #B4C7BF",
-                  textAlign: "center",
-                }}
-              >
-                <span
-                  className="travelTipsHeading"
-                  style={{
-                    fontSize: "40px",
-                    padding: "0 10px",
-                    backgroundColor: "#EDEADC",
-                    color: "#36565C",
-                  }}
-                >
-                  Top Travel Tips
-                </span>
+              <div className="travelTipsH2">
+                <span className="travelTipsHeading">Top Travel Tips</span>
               </div>
             </Fade>
             <p className="travelTipsPara">
@@ -155,7 +140,7 @@ const Home = ({ articles }) => {
                 duration={3000}
               >
                 <Link
-                  to="/planTrip"
+                  to="/planYourTrip"
                   style={{
                     color: "#36565C",
                     textDecoration: "none",
