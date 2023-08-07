@@ -31,11 +31,11 @@ div.carousel {
   text-align: center;
   color: white;
   font-size: 2.5rem;
-  width: 80%;
+  width: 60%;
+  padding: 1rem;
   opacity: 0;
   transition: transform 0.5s ease, opacity 0.5s ease;
   position: relative;
-  /* top: -20%; */
   z-index: 1;
 }
 
@@ -97,14 +97,12 @@ div.carousel {
   .nextBtn {
     font-size: 20px;
   }
-
   .prevBtn:hover,
   .nextBtn:hover {
     transform: scale(1.4);
   }
-
   .slideSpan {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }
 
