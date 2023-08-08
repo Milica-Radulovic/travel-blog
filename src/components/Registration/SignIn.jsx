@@ -9,6 +9,7 @@ import "./RegistrationStyle.css";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // Add showPassword state
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const { signIn } = UserAuth();
@@ -62,11 +63,23 @@ const SignIn = () => {
           <label>
             <span className="required">Password *</span>
           </label>
-          <input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+          <div className="passwordWrapper">
+            {" "}
+            <input
+              type={showPassword ? "text" : "password"} // Show text if showPassword is true
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <label className="customChekbox">
+              {" "}
+              <input
+                type="checkbox"
+                onChange={() => setShowPassword((prev) => !prev)}
+              />
+              <span className="check"></span>
+              Show Password
+            </label>
+          </div>
 
           {/* Button */}
           <button className="buttonOne">Sign In</button>
