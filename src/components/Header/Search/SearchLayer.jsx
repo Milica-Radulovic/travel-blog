@@ -11,11 +11,12 @@ const SearchLayer = ({ onClose }) => {
 
   console.log(articles);
   return (
-    <div className="search-layer active">
-      <button className="searchLayerClose" onClick={onClose}>
-        <img src={close} style={{ width: "100px" }} />
-      </button>
+    <div className="searchLayer active">
       <div className="searchLayerInner">
+        {" "}
+        <button className="searchLayerClose" onClick={onClose}>
+          <img src={close} className="closeButton" />
+        </button>
         <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
           <div className="logo">
             <img src={logo} style={{ width: "200px" }} />

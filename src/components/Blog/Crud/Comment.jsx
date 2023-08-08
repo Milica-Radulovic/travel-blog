@@ -108,7 +108,7 @@ export default function Comment({ article }) {
                       }}
                     />
                   ) : (
-                    <div>{userName ? userName : "User:"}</div>
+                    <div>{userName ? userName : userEmail}</div>
                   )}
                   {/* Display user photo or displayName if available */}
                 </span>
