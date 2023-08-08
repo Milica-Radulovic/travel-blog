@@ -38,7 +38,7 @@ const AccountPage = () => {
           </Fade>
           {hasUpdatedProfile ? (
             <div>
-              <h1>Profile</h1>
+              <p className="accountPagePara">Profile</p>
               <div>
                 <p>Name: {user.displayName}</p>
                 <p>Email: {user.email}</p>
@@ -50,10 +50,14 @@ const AccountPage = () => {
                   />
                 )}
               </div>
-              <Link to="/profile">Update your Profile</Link>
+              <Link className="missingPageLink" to="/profile">
+                Update your Profile
+              </Link>
             </div>
           ) : (
-            <Link to="/profile">Create your Profile</Link>
+            <Link className="missingPageLink" to="/profile">
+              Create your Profile
+            </Link>
           )}
 
           {/* Button */}

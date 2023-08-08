@@ -88,7 +88,7 @@ const NewPost = () => {
             body: formData.body,
             imageUrl: url,
             datetime: Timestamp.now().toDate(),
-            createdBy: user.displayName,
+            createdBy: user.displayName || user.email,
             userId: user.uid,
             likes: [],
             comments: [],

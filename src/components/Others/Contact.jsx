@@ -60,7 +60,11 @@ const Contact = () => {
 
         {/* Form Section */}
         <section className="formContainer">
-          <form className="newPostForm">
+          <form
+            action="https://formspree.io/f/xayzqljl"
+            method="POST"
+            className="newPostForm"
+          >
             <label htmlFor="fName">
               <span className="required">First Name *</span>
             </label>

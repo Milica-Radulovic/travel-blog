@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import Firebase storage functions
-
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { UserAuth } from "../../context/AuthContext";
 import logo from "../../images/logo.svg";
 import { Fade } from "react-awesome-reveal";
@@ -35,7 +35,9 @@ function UserProfile() {
     });
 
     // No need to call `updateProfile` from firebase/auth here, as it's already done in the context
-
+    toast("You have updated your Profile successfully.", {
+      type: "success",
+    });
     navigate("/");
   };
 
