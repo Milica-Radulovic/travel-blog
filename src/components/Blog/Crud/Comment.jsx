@@ -90,6 +90,7 @@ export default function Comment({ article }) {
             photoURL,
             createdAt,
             userName,
+            user: email,
           }) => (
             <div key={commentId} className="comment">
               <div>
@@ -106,7 +107,7 @@ export default function Comment({ article }) {
                       }}
                     />
                   ) : (
-                    <div>{userName || user.email}</div>
+                    <div>{userName || "USER:"}</div>
                   )}
                   {/* Display user photo or displayName if available */}
                 </span>
