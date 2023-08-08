@@ -120,7 +120,7 @@ body {
   }
 }
 
-@media (min-width: 577px) and (max-width: 900px) {
+@media (max-width: 900px) {
   .navbarLeft {
     padding-left: 0rem;
   }
@@ -143,24 +143,11 @@ body {
   .navbarHamburger {
     display: flex;
     position: absolute;
-    right: 9rem;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .responsiveRegistration {
-    display: flex;
-    position: absolute;
-    right: 5rem;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .responsiveSearch {
-    display: flex;
-    position: absolute;
     right: 1rem;
     top: 50%;
     transform: translateY(-50%);
   }
+
   .extendedNavbar {
     display: flex;
     flex-direction: column;
@@ -171,81 +158,6 @@ body {
     height: 100vh;
     position: absolute;
     top: 120px;
-    right: -80%;
-    opacity: 1;
-    transition: all 0.5s ease;
-    background: #36565c;
-    right: 0px;
-    opacity: 1;
-    transition: all 0.5s ease;
-    z-index: 99999;
-  }
-  .extendedNavbarMainLink {
-    color: #e1d4bc;
-    font-size: 1.2rem;
-    text-decoration: none;
-    border-bottom: 1px solid #31474b;
-  }
-}
-
-@media (max-width: 576px) {
-  .navbarContaner {
-    height: 70px;
-    margin: 0.5rem 0;
-  }
-  .navbarLeft {
-    padding-left: 0rem;
-  }
-  .navbarRight {
-    display: none;
-  }
-  .navbarMain {
-    display: none;
-  }
-  .navbarLogo {
-    width: 100px;
-  }
-  .responsiveNavIcon {
-    width: 50px;
-    height: 50px;
-    background-color: #e1d4bc;
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #36565c;
-  }
-  .navbarHamburger {
-    display: flex;
-    position: absolute;
-    right: 7.4rem;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .responsiveRegistration {
-    display: flex;
-    position: absolute;
-    right: 4.2rem;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .responsiveSearch {
-    display: flex;
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .extendedNavbar {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 2rem;
-    padding-top: 6rem;
-    width: 80%;
-    height: 100vh;
-    position: absolute;
-    top: 80px;
     right: -80%;
     opacity: 1;
     transition: all 0.5s ease;

@@ -27,59 +27,16 @@ const Navbar = () => {
             <img src={logo} className="navbarLogo" />
           </Link>
 
-          <div className="responsiveNavIcon navbarHamburger">
-            <div className="hamburger">
-              <Hamburger
-                className="hamburger"
-                toggled={isOpen}
-                toggle={setOpen}
-                color=" #36565C"
-                size={20}
-                duration={0.4}
-              />
-            </div>
-          </div>
-          <Link
-            className="responsiveNavIcon responsiveSearch"
-            onClick={handleSearchIconClick}
-          >
-            <div>
-              <i className="fa-solid fa-magnifying-glass"></i>
-            </div>
-          </Link>
-          {showSearchLayer && (
-            <SearchLayer
-              onClose={handleSearchIconClick}
-              search={search}
-              setSearch={setSearch}
-              articles={articles}
+          <div className="navbarHamburger">
+            <Hamburger
+              className="hamburger"
+              toggled={isOpen}
+              toggle={setOpen}
+              color="#E1D4BC"
+              size={80}
+              duration={0.4}
             />
-          )}
-          {!user ? (
-            <Link
-              className="responsiveNavIcon responsiveRegistration"
-              to="/signin"
-            >
-              <div>
-                <FaUser />
-              </div>
-            </Link>
-          ) : (
-            <Link
-              className="responsiveNavIcon responsiveRegistration"
-              to="/account"
-            >
-              {user.photoURL ? (
-                <img
-                  className="responsiveNavIcon"
-                  src={user.photoURL}
-                  alt="User Avatar"
-                />
-              ) : (
-                <FaUser />
-              )}
-            </Link>
-          )}
+          </div>
         </div>
 
         <div className="navbarMain ">
@@ -151,6 +108,43 @@ const Navbar = () => {
           <Link className="extendedNavbarMainLink" to="/contact">
             <div className="extendedNavbarMainDiv">Contact</div>
           </Link>
+          <Link className="navIcon " onClick={handleSearchIconClick}>
+            <div>
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </div>
+          </Link>
+          {showSearchLayer && (
+            <SearchLayer
+              onClose={handleSearchIconClick}
+              search={search}
+              setSearch={setSearch}
+              articles={articles}
+            />
+          )}
+          {!user ? (
+            <Link className="navIcon " to="/signin">
+              <div>
+                <FaUser />
+              </div>
+            </Link>
+          ) : (
+            <Link className="navIcon" to="/account">
+              {user.photoURL ? (
+                <img
+                  style={{
+                    width: "60px",
+                    height: "60px",
+                    objectFit: "cover",
+                    borderRadius: "50%",
+                  }}
+                  src={user.photoURL}
+                  alt="User Avatar"
+                />
+              ) : (
+                <FaUser />
+              )}
+            </Link>
+          )}
         </div>
       )}
     </nav>
