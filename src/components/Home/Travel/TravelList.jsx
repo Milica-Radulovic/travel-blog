@@ -4,9 +4,23 @@ import "./traveltips.css";
 const ItemInput = ({ onAddItems }) => {
     const [inputValue, setInputValue] = useState("");
     const [selected, setSelected] = useState(1);
-
+    const [inputClass, setInputClass] = useState(false);
+    const [selectionClass, setSelectionClass] = useState(false);
+    const inputLimit = 12;
+    const handleInputFocus = () => {
+        setInputClass(true);
+    };
+    const inputStyle = inputClass ? "inputFocus" : "formBox";
+    const handleSelectionFocus = () => {
+        setSelectionClass(true);
+    };
+    const selectionStyle = selectionClass ? "selectionFocus" : "selection";
     const handleInputChange = (e) => {
-        setInputValue(e.target.value);
+        if (inputValue.length < inputLimit) {
+            setInputValue(e.target.value);
+        } else {
+            alert("You have reached the limit of 12 characters");
+        }
     };
     const handleSelectChange = (e) => {
         setSelected(Number(e.target.value));
@@ -21,64 +35,116 @@ const ItemInput = ({ onAddItems }) => {
 
     return (
         <div className="ItemInputContainer">
-            <i
-                className="fa-solid fa-plane-departure"
-                style={{ fontSize: "3rem" }}
-            ></i>
-            <label>
-                Plan your trip in advance and ensure you don't forget a thing!
-            </label>
-
-            <form onSubmit={handleFormSubmit} className="formInput">
-                <div className="inputCont">
-                    <input
-                        type="text"
-                        placeholder="Add item to list*"
-                        value={inputValue}
-                        onChange={handleInputChange}
-                    />
-                    <select onChange={handleSelectChange} value={selected}>
-                        {[...Array(10)].map((_, i) => (
-                            <option value={i + 1} key={i + 1}>
-                                {i + 1}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <button type="submit" className="buttonOne">
-                    Add to List
-                </button>
-            </form>
+            <div className="listIntro">
+                <i
+                    className="fa-solid fa-suitcase-rolling"
+                    style={{ fontSize: "3rem", padding: "0.1rem" }}
+                ></i>
+                <label style={{ padding: "1.5rem" }}>
+                    Introducing our Packing List App - your ultimate travel
+                    companion for stress-free packing!
+                </label>
+                <ul>
+                    <span style={{ fontWeight: "bold" }}>
+                        Our app lets you:
+                    </span>
+                    <li>Add unlimited items, from one to ten per type.</li>
+                    <li>Easily mark items as packed or delete them.</li>
+                    <li>Organize items into customizable categories.</li>
+                    <li>
+                        Receive smart suggestions based on your trip details.
+                    </li>
+                </ul>
+                <p>
+                    Streamline your packing process and travel with confidence
+                    using our Packing List App. Start packing smarter today!
+                </p>
+            </div>
+            <div>
+                <form onSubmit={handleFormSubmit} className="formInput">
+                    <div className="inputCont">
+                        <input
+                            onBlur={() => setInputClass(false)}
+                            onFocus={handleInputFocus}
+                            type="text"
+                            placeholder="Add item to list*"
+                            value={inputValue}
+                            onChange={handleInputChange}
+                            className={inputStyle}
+                        />
+                        <select
+                            onFocus={handleSelectionFocus}
+                            onBlur={() => setSelectionClass(false)}
+                            onChange={handleSelectChange}
+                            value={selected}
+                            className={selectionStyle}
+                        >
+                            {[...Array(10)].map((_, i) => (
+                                <option
+                                    className="selectionOption"
+                                    value={i + 1}
+                                    key={i + 1}
+                                >
+                                    {i + 1}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <button type="submit" className="buttonOne">
+                        Add to List
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };
 
-const Item = ({ handleEdit, item, onDelete }) => {
+const Item = ({ handleDone, handleUnDone, item, onDelete }) => {
     const linethrough = item.isDone ? "linethrough" : "";
     return (
         <div className="ItemContainer">
             <span className={linethrough}>
-                {item.quantity}. {item.name}
+                <i className="listMark fa-solid fa-thumbtack"></i>
+                {item.quantity} {item.name}
             </span>
-            <button className="BtnDone" onClick={() => handleEdit(item.id)}>
-                {!item.isDone ? (
-                    <i className="fa-solid fa-check"></i>
-                ) : (
-                    <i className="fa-solid fa-chevron-left"></i>
-                )}
-            </button>
-            {item.isDone && (
-                <button className="BtnDone" onClick={() => onDelete(item.id)}>
-                    <i className="fa-solid fa-trash"></i>
+            {!item.isDone && (
+                <button className="BtnDone" onClick={() => handleDone(item.id)}>
+                    <i
+                        className="fa-solid fa-check"
+                        style={{ padding: "0.3rem" }}
+                    ></i>
                 </button>
+            )}
+            {item.isDone && (
+                <div>
+                    <button
+                        className="BtnDone"
+                        onClick={() => handleUnDone(item.id)}
+                    >
+                        <i
+                            className="fa-solid fa-arrow-left"
+                            style={{ padding: "0.3rem" }}
+                        ></i>
+                    </button>
+                    <button
+                        className="BtnDone"
+                        onClick={() => onDelete(item.id)}
+                    >
+                        {" "}
+                        <i
+                            className="fa-solid fa-trash"
+                            style={{ padding: "0.3rem" }}
+                        ></i>
+                    </button>
+                </div>
             )}
         </div>
     );
 };
 
-const ToDo = ({ handleEdit, toDo }) => {
+const ToDo = ({ handleDone, handleUnDone, toDo }) => {
     return (
-        <div className="ItemList">
+        <div className="ItemList1">
             <h2 className="header2">
                 <i
                     className="fa-solid fa-compass"
@@ -89,7 +155,8 @@ const ToDo = ({ handleEdit, toDo }) => {
             <ul>
                 {toDo.map((item) => (
                     <Item
-                        handleEdit={() => handleEdit(item.id)}
+                        handleUnDone={() => handleUnDone(item.id)}
+                        handleDone={() => handleDone(item.id)}
                         item={item}
                         key={item.id}
                     />
@@ -99,9 +166,9 @@ const ToDo = ({ handleEdit, toDo }) => {
     );
 };
 
-const Done = ({ handleEdit, onDelete, done }) => {
+const Done = ({ handleDone, handleUnDone, onDelete, done }) => {
     return (
-        <div className="ItemList">
+        <div className="ItemList2">
             <h2 className="header2">
                 <i
                     className="fa-solid fa-suitcase-rolling"
@@ -112,7 +179,8 @@ const Done = ({ handleEdit, onDelete, done }) => {
             <ul>
                 {done.map((item) => (
                     <Item
-                        handleEdit={() => handleEdit(item.id)}
+                        handleUnDone={() => handleUnDone(item.id)}
+                        handleDone={() => handleDone(item.id)}
                         item={item}
                         key={item.id}
                         onDelete={onDelete}
@@ -144,28 +212,48 @@ const TravelList = () => {
         setItems([...items, newItem]);
         saveItemsToLocalStorage([...items, newItem]);
     };
-
-    const handleEditItems = (id) => {
-        setItems((items) =>
-            items.map((el) =>
-                el.id === id ? { ...el, isDone: !el.isDone } : el
-            )
+    const handleUnDoneItems = (id) => {
+        const valueToEdit = items.map((el) =>
+            el.id === id ? { ...el, isDone: false } : el
         );
+        setItems((items) =>
+            items.map((el) => (el.id === id ? { ...el, isDone: false } : el))
+        );
+
+        localStorage.setItem("listItems", JSON.stringify(valueToEdit));
+    };
+    const handleDoneItems = (id) => {
+        const valueToEdit = items.map((el) =>
+            el.id === id ? { ...el, isDone: true } : el
+        );
+        setItems((items) =>
+            items.map((el) => (el.id === id ? { ...el, isDone: true } : el))
+        );
+
+        localStorage.setItem("listItems", JSON.stringify(valueToEdit));
     };
     const toDo = items.filter((item) => !item.isDone);
     const done = items.filter((item) => item.isDone);
 
     const handleDeleteItems = (id) => {
+        const valueToRemove = items.filter((item) => item.id !== id);
         setItems(items.filter((item) => item.id !== id));
+        localStorage.setItem("listItems", JSON.stringify(valueToRemove));
     };
     return (
         <div className="travelListBox">
             <ItemInput onAddItems={handleAddItems} />
             <div className="subTravelListBox">
-                <ToDo handleEdit={handleEditItems} items={items} toDo={toDo} />
+                <ToDo
+                    handleDone={handleDoneItems}
+                    items={items}
+                    toDo={toDo}
+                    handleUnDone={handleUnDoneItems}
+                />
                 <span className="border"></span>
                 <Done
-                    handleEdit={handleEditItems}
+                    handleUnDone={handleUnDoneItems}
+                    handleDone={handleDoneItems}
                     items={items}
                     done={done}
                     onDelete={handleDeleteItems}
