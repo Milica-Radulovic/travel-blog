@@ -8,6 +8,7 @@ import logo from "../../images/logo.svg";
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // Add showPassword state
   const [error, setError] = useState("");
   const { createUser } = UserAuth();
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const SignUp = () => {
     <main className="registartionWrapper">
       {/* Logo */}
       <span className="registrationLogo">
-        <img src={logo} style={{ width: "200px" }} />
+        <img src={logo} style={{ width: "200px" }} alt="Logo" />
         <p className="logoText">Write your own tale...</p>
       </span>
       <div className="registrationInner">
@@ -63,11 +64,18 @@ const SignUp = () => {
           <label>
             <span className="required">Password *</span>
           </label>
-          <input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+          <div style={{ position: "relative" }}>
+            <input
+              type={showPassword ? "text" : "password"} // Show text if showPassword is true
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+
+            <input
+              type="checkbox"
+              onChange={() => setShowPassword((prev) => !prev)}
+            />
+          </div>
 
           {/* Button */}
           <button className="buttonOne">Sign Up</button>

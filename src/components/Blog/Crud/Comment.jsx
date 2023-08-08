@@ -39,6 +39,7 @@ export default function Comment({ article }) {
     updateDoc(commentRef, {
       comments: arrayUnion({
         user: user.uid,
+        userEmail: user.email,
         userName: user.displayName,
         photoURL: user.photoURL,
         comment: comment,
@@ -90,7 +91,7 @@ export default function Comment({ article }) {
             photoURL,
             createdAt,
             userName,
-            user: email,
+            userEmail,
           }) => (
             <div key={commentId} className="comment">
               <div>
@@ -107,7 +108,7 @@ export default function Comment({ article }) {
                       }}
                     />
                   ) : (
-                    <div>{userName || "USER:"}</div>
+                    <div>{userName ? userName : "User:"}</div>
                   )}
                   {/* Display user photo or displayName if available */}
                 </span>
