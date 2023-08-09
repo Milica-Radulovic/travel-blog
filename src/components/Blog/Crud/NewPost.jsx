@@ -20,13 +20,14 @@ const NewPost = () => {
   const { user } = UserAuth();
   const [formData, setFormData] = useState({
     title: "",
-    author: "",
+    country: "",
     datetime: Timestamp.now().toDate(),
     description: "",
     body: "",
     image: "",
   });
   const [progress, setProgress] = useState(0);
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
   // handle Input change
@@ -40,16 +41,46 @@ const NewPost = () => {
     setFormData({ ...formData, image: e.target.files[0] });
   };
 
+  //validate
+  const validate = () => {
+    let errors = {};
+    if (!formData.title) {
+      errors.title = "Title is Required.";
+    }
+    if (!formData.country) {
+      errors.country = "Country name is Required.";
+    }
+    if (!formData.description) {
+      errors.description = "Description is Required.";
+    }
+    if (!formData.body) {
+      errors.body = "Content is Required.";
+    }
+    if (!formData.image) {
+      errors.image = "Image is Required.";
+    }
+    return errors;
+  };
+
   // handle Submit
-  const handleSubmit = () => {
-    if (
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    {
+      /* if (
       !formData.title ||
-      !formData.author ||
+      !formData.country ||
       !formData.description ||
       !formData.body ||
       !formData.image
     ) {
       alert("Please fill all the fields");
+    }*/
+    }
+    const errors = validate();
+    setErrors(errors); // Update the errors state to trigger error display
+
+    if (Object.keys(errors).length) {
+      return; // Don't proceed if there are errors
     }
 
     const storageRef = ref(
@@ -73,7 +104,7 @@ const NewPost = () => {
       () => {
         setFormData({
           title: "",
-          author: "",
+          country: "",
           description: "",
           body: "",
           image: "",
@@ -83,7 +114,7 @@ const NewPost = () => {
           const articleRef = collection(db, "Articles");
           addDoc(articleRef, {
             title: formData.title,
-            author: formData.author,
+            country: formData.country,
             description: formData.description,
             body: formData.body,
             imageUrl: url,
@@ -179,13 +210,14 @@ const NewPost = () => {
               <span className="required">Add Image *</span>
             </label>
             <input
+              className={errors.image ? "error-input" : ""}
               type="file"
               name="image"
               accept="image/*"
               required
               onChange={(e) => handleImageChange(e)}
             />
-
+            {errors.image && <p className="error-message">{errors.image}</p>}
             {progress === 0 ? null : (
               <div className="progress">
                 <div
@@ -196,33 +228,37 @@ const NewPost = () => {
                 </div>
               </div>
             )}
-
             <label htmlFor="">
               <span className="required">Title *</span>
             </label>
             <input
+              className={errors.title ? "error-input" : ""}
               type="text"
               name="title"
               required
               value={formData.title}
               onChange={(e) => handleChange(e)}
             />
-
+            {errors.title && <p className="error-message">{errors.title}</p>}
             <label htmlFor="">
-              <span className="required">Author *</span>
+              <span className="required">Country *</span>
             </label>
             <input
+              className={errors.country ? "error-input" : ""}
               type="text"
-              name="author"
+              name="country"
               required
-              value={formData.author}
+              value={formData.country}
               onChange={(e) => handleChange(e)}
             />
-
+            {errors.country && (
+              <p className="error-message">{errors.country}</p>
+            )}
             <label htmlFor="">
               <span className="required">Description *</span>
             </label>
             <textarea
+              className={errors.description ? "error-input" : ""}
               rows="10"
               cols="50"
               name="description"
@@ -230,15 +266,17 @@ const NewPost = () => {
               value={formData.description}
               onChange={(e) => handleChange(e)}
             ></textarea>
-
+            {errors.description && (
+              <p className="error-message">{errors.description}</p>
+            )}
             <label htmlFor="">
               <span className="required">Add Content *</span>
             </label>
             <Editor
+              className={errors.body ? "error-input" : ""}
               required
               textareaName="body"
               apiKey="4302b75eb45ce7c6212f47055d96a6f1b2f2b5af0095c92383e1cba784f571d4" // Replace with your TinyMCE API key
-              initialValue="Write your own story..."
               init={{
                 height: 500,
                 menubar: false,
@@ -258,8 +296,8 @@ const NewPost = () => {
               onEditorChange={(content) => {
                 setFormData({ ...formData, body: content });
               }}
-            />
-
+            />{" "}
+            {errors.body && <p className="error-message">{errors.body}</p>}
             <button className="buttonOne" onClick={handleSubmit}>
               Submit
             </button>

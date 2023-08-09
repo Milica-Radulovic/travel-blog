@@ -107,6 +107,19 @@ const PostPage = () => {
                 {article.createdBy}
               </p>
 
+              {/* Post Country */}
+              <p className="blogPageAuthor">
+                <span
+                  style={{
+                    fontFamily: "'Laila', sans-serif",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Country:{" "}
+                </span>
+                {article.country}
+              </p>
+
               {/* Post Date */}
               <p className="postPageDate">
                 <span

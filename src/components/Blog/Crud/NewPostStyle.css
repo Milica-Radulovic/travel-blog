@@ -47,6 +47,17 @@
   flex-direction: column;
 }
 
+/* .error-input {
+  border: 2px solid red;
+} */
+
+/* Add this to style the error messages */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
 @media (min-width: 993px) and (max-width: 1200px) {
   .inner {
     width: 90%;
