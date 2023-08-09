@@ -4,12 +4,17 @@ const RandomPost = ({ article }) => {
   return (
     <article className="recentPost">
       <Link to={`/article/${article.id}`}>
-        <img
-          className="recentPostImage"
-          src={article.imageUrl}
-          alt="Recipe Image"
-          style={{ width: "100%" }}
-        />
+        <div className="imageContainer">
+          <img
+            className="recentPostImage"
+            src={article.imageUrl}
+            alt="Recipe Image"
+            style={{ width: "100%" }}
+          />
+          <div className="imageOverlay">
+            <div className="imageText">{article.country}</div>
+          </div>
+        </div>
       </Link>
     </article>
   );

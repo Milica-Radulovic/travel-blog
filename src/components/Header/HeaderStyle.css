@@ -89,17 +89,22 @@ body {
   justify-content: center;
   align-items: center;
   color: #36565c;
-  transition: color 0.3s ease;
+  transition: all 0.4s linear;
 }
 
 .navIcon:hover {
   color: #f0ede8;
 }
 
-/* .animation:hover {
+.navIcon i {
+  transition: 0.5s ease-in-out;
+}
+.navIcon:hover i {
   transform: rotate(360deg);
-} */
-
+}
+.navIcon:hover {
+  background-color: var(--navBackgroundColor);
+}
 .navbarLogo {
   width: 140px;
 }
@@ -148,7 +153,6 @@ body {
     top: 50%;
     transform: translateY(-50%);
   }
-
   .extendedNavbar {
     display: flex;
     flex-direction: column;
@@ -173,6 +177,10 @@ body {
     font-size: 1.2rem;
     text-decoration: none;
     border-bottom: 1px solid #31474b;
+    transition: all 0.4s linear;
+  }
+  .extendedNavbarMainLink:hover {
+    color: #f0ede8;
   }
 }
 

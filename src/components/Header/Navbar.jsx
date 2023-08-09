@@ -56,7 +56,7 @@ const Navbar = () => {
 
         <div className="navbarRight ">
           <Link className="navIcon" onClick={handleSearchIconClick}>
-            <div className="animation">
+            <div>
               <i className="fa-solid fa-magnifying-glass"></i>
             </div>
           </Link>
@@ -71,7 +71,7 @@ const Navbar = () => {
           {!user ? (
             <Link className="navIcon" to="/signin">
               <div className="animation">
-                <FaUser />
+                <i className="fa-solid fa-user"></i>
               </div>
             </Link>
           ) : (
@@ -124,7 +124,7 @@ const Navbar = () => {
           {!user ? (
             <Link className="navIcon " to="/signin">
               <div>
-                <FaUser />
+                <i className="fa-solid fa-user"></i>
               </div>
             </Link>
           ) : (
@@ -141,7 +141,7 @@ const Navbar = () => {
                   alt="User Avatar"
                 />
               ) : (
-                <FaUser />
+                <i className="fa-solid fa-user"></i>
               )}
             </Link>
           )}
