@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./traveltips.css";
-
+import { Fade } from "react-awesome-reveal";
 const ItemInput = ({ onAddItems }) => {
     const [inputValue, setInputValue] = useState("");
     const [selected, setSelected] = useState(1);
@@ -242,23 +242,26 @@ const TravelList = () => {
     };
     return (
         <div className="travelListBox">
-            <ItemInput onAddItems={handleAddItems} />
-            <div className="subTravelListBox">
-                <ToDo
-                    handleDone={handleDoneItems}
-                    items={items}
-                    toDo={toDo}
-                    handleUnDone={handleUnDoneItems}
-                />
-                <span className="border"></span>
-                <Done
-                    handleUnDone={handleUnDoneItems}
-                    handleDone={handleDoneItems}
-                    items={items}
-                    done={done}
-                    onDelete={handleDeleteItems}
-                />
-            </div>
+            <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
+                <ItemInput onAddItems={handleAddItems} />
+
+                <div className="subTravelListBox">
+                    <ToDo
+                        handleDone={handleDoneItems}
+                        items={items}
+                        toDo={toDo}
+                        handleUnDone={handleUnDoneItems}
+                    />
+                    <span className="border"></span>
+                    <Done
+                        handleUnDone={handleUnDoneItems}
+                        handleDone={handleDoneItems}
+                        items={items}
+                        done={done}
+                        onDelete={handleDeleteItems}
+                    />
+                </div>
+            </Fade>
         </div>
     );
 };
