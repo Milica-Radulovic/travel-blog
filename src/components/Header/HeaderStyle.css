@@ -62,6 +62,10 @@ body {
   text-decoration: none;
 }
 
+.navbarMainLink:hover {
+  color: #f0ede8;
+}
+
 .navbarMainLink:first-child {
   border-left: 1px solid #31474b; /* Add a side border between the links */
 }
@@ -85,6 +89,11 @@ body {
   justify-content: center;
   align-items: center;
   color: #36565c;
+  transition: color 0.3s ease;
+}
+
+.navIcon:hover {
+  color: #f0ede8;
 }
 
 /* .animation:hover {

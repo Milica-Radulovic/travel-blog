@@ -23,8 +23,10 @@ const Carousel = () => {
           <Slide
             handleNext={handleNext}
             handlePrev={handlePrevious}
-            backgroundImage="url(https://images.unsplash.com/photo-1529180184525-78f99adb8e98?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80)"
-            textPraragraphs={"The journey not the arrival matters. -T.S. Eliot"}
+            backgroundImage="url(https://images.unsplash.com/photo-1530789253388-582c481c54b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80)"
+            textPraragraphs={
+              "Adventure is an attitude that we must apply to the day-to-day obstacles in life. -John Amatt"
+            }
           ></Slide>
         )}
         {index === 1 && (
@@ -41,10 +43,8 @@ const Carousel = () => {
           <Slide
             handleNext={handleNext}
             handlePrev={handlePrevious}
-            backgroundImage="url(https://images.unsplash.com/photo-1530789253388-582c481c54b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80)"
-            textPraragraphs={
-              "Adventure is an attitude that we must apply to the day-to-day obstacles in life. -John Amatt"
-            }
+            backgroundImage="url(https://images.unsplash.com/photo-1529180184525-78f99adb8e98?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80)"
+            textPraragraphs={"The journey not the arrival matters. -T.S. Eliot"}
           ></Slide>
         )}
       </div>
