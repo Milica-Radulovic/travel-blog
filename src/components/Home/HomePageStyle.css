@@ -219,6 +219,12 @@ div.carousel {
   color: var(--fontColorDark);
   padding: 2rem;
   font-size: 1.2rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.travelTipsLink:hover {
+  background-color: #f0f0f0; /* Changes the background colour on hover */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle box shadow on hover */
 }
 
 @media (min-width: 993px) and (max-width: 1500px) {
