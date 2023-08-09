@@ -45,7 +45,7 @@ const BlogPost = ({ article }) => {
             {article.createdBy}
           </p>
 
-          {/* Post Author */}
+          {/* Post Country */}
           {/*           <p className="blogPageAuthor">
             <span
               style={{
@@ -53,9 +53,9 @@ const BlogPost = ({ article }) => {
                 fontWeight: "bold",
               }}
             >
-              Author:{" "}
+              Country:{" "}
             </span>
-            {article.author}
+            {article.country}
           </p> */}
 
           {/* Post Date */}
