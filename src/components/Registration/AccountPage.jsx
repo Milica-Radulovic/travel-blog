@@ -72,17 +72,41 @@ const AccountPage = () => {
             </button>
           </div>
         </div>{" "}
-        <div className="userPostsFeed">
-          <Fade
-            delay={1e2}
-            cascade
-            damping={1e-1}
-            duration={3000}
-            direction="right"
-          >
-            <UserPostsFeed />
-          </Fade>
-        </div>
+        {articles.every((article) => article.userId !== user.uid) ? (
+          <div>
+            <p className="userPostsPara">
+              {user.displayName || user.email} hasn't added any Tales.
+            </p>
+            <p className="userPostsPara">
+              You haven't shared your Tale yet? <br />
+              Unleash Your Creativity: Share Your Story Today!
+              <Link className="userPostsLink" to="/article">
+                <br />
+                <Fade
+                  delay={1e2}
+                  cascade
+                  damping={1e-1}
+                  duration={3000}
+                  direction="down"
+                >
+                  <button className="buttonOne">Add Your First Tale</button>
+                </Fade>
+              </Link>
+            </p>
+          </div>
+        ) : (
+          <div className="userPostsFeed">
+            <Fade
+              delay={1e2}
+              cascade
+              damping={1e-1}
+              duration={3000}
+              direction="right"
+            >
+              <UserPostsFeed />
+            </Fade>
+          </div>
+        )}
       </div>
     </main>
   );
