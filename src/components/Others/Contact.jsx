@@ -12,8 +12,16 @@ import "../Blog/Crud/NewPostStyle.css";
 const Contact = () => {
   return (
     <main className="wrapper">
-      <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
-        <h2>Contact Us</h2>
+      <Fade
+        className="contact"
+        delay={1e2}
+        cascade
+        damping={1e-1}
+        duration={3000}
+      >
+        <div className="contactUsH2">
+          <span className="contactUsHeading">Contact Us</span>
+        </div>
       </Fade>
       <div className="inner">
         {/* Text Section with Logo and Social Media Links */}
