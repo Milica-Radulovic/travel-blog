@@ -1,12 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
+import { useData } from "../../context/DataContext";
 import { toast } from "react-toastify";
 import { Fade } from "react-awesome-reveal";
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
+import UserPostsFeed from "./UserPostsFeed";
 
 const AccountPage = () => {
   const { user, logout } = UserAuth();
+  const { articles, isLoading, deleteArticle } = useData();
   const navigate = useNavigate();
 
   // handle Logout
@@ -24,46 +27,61 @@ const AccountPage = () => {
   const hasUpdatedProfile = user && user.displayName && user.photoURL;
 
   return (
-    <main className="registartionWrapper">
+    <main className="registartionWrapper ">
       {/* Logo */}
       <span className="registrationLogo">
         <img src={logo} style={{ width: "200px" }} />
         <p className="logoText">Write your own tale...</p>
-      </span>
-      <div className="registrationInner">
-        {/* Text */}
-        <div className="registrationText">
-          <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
-            <h2>Your Account</h2>
-          </Fade>
-          {hasUpdatedProfile ? (
-            <div>
-              <p className="accountPagePara">Profile</p>
+      </span>{" "}
+      <Fade delay={1e2} cascade damping={1e-1} duration={3000} direction="down">
+        <h2>{user.displayName || user.email}'s Tales</h2>
+      </Fade>
+      <div className="profilePageWrapper">
+        <div className="profilePageInner">
+          {/* Text */}
+          <div className="registrationText">
+            <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
+              <h2>Your Profile</h2>
+            </Fade>
+            {hasUpdatedProfile ? (
               <div>
-                <p>Name: {user.displayName}</p>
-                <p>Email: {user.email}</p>
-                {user.photoURL && (
-                  <img
-                    src={user.photoURL}
-                    alt="User Avatar"
-                    style={{ width: "100px" }}
-                  />
-                )}
+                <div>
+                  <p>Name: {user.displayName}</p>
+                  <p>Email: {user.email}</p>
+                  {user.photoURL && (
+                    <img
+                      src={user.photoURL}
+                      alt="User Avatar"
+                      style={{ width: "100px" }}
+                    />
+                  )}
+                </div>
+                <Link className="missingPageLink" to="/profile">
+                  Update your Profile
+                </Link>
               </div>
+            ) : (
               <Link className="missingPageLink" to="/profile">
-                Update your Profile
+                Create your Profile
               </Link>
-            </div>
-          ) : (
-            <Link className="missingPageLink" to="/profile">
-              Create your Profile
-            </Link>
-          )}
+            )}
 
-          {/* Button */}
-          <button className="buttonOne" onClick={handleLogout}>
-            Log Out
-          </button>
+            {/* Button */}
+            <button className="buttonOne" onClick={handleLogout}>
+              Log Out
+            </button>
+          </div>
+        </div>{" "}
+        <div className="userPostsFeed">
+          <Fade
+            delay={1e2}
+            cascade
+            damping={1e-1}
+            duration={3000}
+            direction="right"
+          >
+            <UserPostsFeed />
+          </Fade>
         </div>
       </div>
     </main>

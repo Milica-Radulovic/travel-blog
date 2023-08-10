@@ -105,6 +105,59 @@
   font-size: 1.8rem;
 }
 
+.profilePageWrapper {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  width: 80%;
+  margin-top: 1rem;
+}
+
+.userPostsFeed {
+  flex: 60%;
+  min-width: 60%;
+}
+
+.profilePageInner {
+  flex: 40%;
+  width: 40%;
+  background-color: rgba(237, 234, 220, 0.6);
+  border: 1px solid var(--navBackgroundColor);
+  box-shadow: 5px 5px 20px var(--navBackgroundColor);
+  border-radius: 5px;
+  padding: 2rem;
+}
+
+@media (min-width: 1501px) and (max-width: 1700px) {
+  .profilePageWrapper {
+    width: 90%;
+  }
+}
+
+@media (min-width: 920px) and (max-width: 1500px) {
+  .profilePageWrapper {
+    width: 90%;
+  }
+}
+
+@media (max-width: 920px) {
+  .profilePageWrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    width: 90%;
+  }
+  .profilePageInner {
+    flex: 100%;
+    width: 100%;
+    padding: 1rem;
+  }
+  .userPostsFeed {
+    flex: 100%;
+    min-width: 100%;
+  }
+}
+
 /* Missing Page */
 
 .missingPagePara {
