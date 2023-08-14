@@ -1,7 +1,10 @@
+import { useData } from "../../../context/DataContext";
 import BlogPost from "./BlogPost";
 import "./BlogPageStyle.css";
 
-const BlogFeed = ({ articles }) => {
+const BlogFeed = () => {
+  const { articles } = useData();
+
   return (
     <section className="blogPageSection">
       {articles.map((article) => (

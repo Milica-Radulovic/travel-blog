@@ -107,30 +107,40 @@
 
 .profilePageWrapper {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 3rem;
-  width: 80%;
+  width: 50%;
   margin-top: 1rem;
-}
-
-.userPostsFeed {
-  flex: 60%;
-  min-width: 60%;
+  padding: 1rem;
 }
 
 .profilePageInner {
-  flex: 40%;
-  width: 40%;
+  width: 100%;
   background-color: rgba(237, 234, 220, 0.6);
   border: 1px solid var(--navBackgroundColor);
   box-shadow: 5px 5px 20px var(--navBackgroundColor);
   border-radius: 5px;
   padding: 2rem;
+  margin-top: 2rem;
+}
+
+.profilePageText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .userPostsPara {
   color: white;
   font-size: 1.2rem;
+  margin: 1rem;
+}
+
+.profilePageH2 {
+  margin-bottom: 0;
 }
 
 .userPostsLink {
@@ -142,38 +152,26 @@
   transform: scale(1.4);
 }
 
-@media (min-width: 1501px) and (max-width: 1700px) {
+@media (min-width: 993px) and (max-width: 1500px) {
+  .profilePageWrapper {
+    width: 70%;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 992px) {
   .profilePageWrapper {
     width: 90%;
   }
 }
 
-@media (min-width: 920px) and (max-width: 1500px) {
+@media (max-width: 576px) {
   .profilePageWrapper {
-    width: 90%;
-  }
-}
-
-@media (max-width: 920px) {
-  .profilePageWrapper {
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-    width: 90%;
-  }
-  .profilePageInner {
-    flex: 100%;
     width: 100%;
-    padding: 1rem;
-  }
-  .userPostsFeed {
-    flex: 100%;
-    min-width: 100%;
+    margin-top: 0;
   }
 }
 
 /* Missing Page */
-
 .missingPagePara {
   font-size: 2.2rem;
   margin: 0;

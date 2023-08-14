@@ -20,13 +20,13 @@ const PostPage = () => {
   const { id } = useParams();
   const article = articles.find((article) => article.id === id);
 
-  console.log("Articles:", articles);
-  console.log("ID:", id);
-  console.log("Article:", article);
-
   if (isLoading) {
     // Render a loading indicator while data is being fetched
-    return <div>Loading...</div>;
+    return (
+      <p className="statusIsLoading">
+        <i className="fas fa-spinner fa-pulse"></i>
+      </p>
+    );
   }
 
   if (!article) {
@@ -101,9 +101,9 @@ const PostPage = () => {
                       fontWeight: "bold",
                     }}
                   >
-                    Created By:
+                    Created By:{" "}
                   </span>
-                )}{" "}
+                )}
                 {article.createdBy}
               </p>
 
@@ -129,7 +129,7 @@ const PostPage = () => {
                   }}
                 >
                   Date:{" "}
-                </span>{" "}
+                </span>
                 {article.datetime.toDate().toDateString()}
               </p>
 
@@ -150,6 +150,7 @@ const PostPage = () => {
               </div>
             </>
           )}
+
           {/* Comments */}
           <Comment article={article} />
           {/* Render the Comment component and pass the article as a prop */}
@@ -162,12 +163,14 @@ const PostPage = () => {
               </p>
             </div>
           )}
+
           {/* Delete Button */}
           {user && user.uid === article.userId && (
             <button className="buttonOne postPageButton" onClick={handleDelete}>
               Delete
             </button>
           )}
+
           {/* Message if there is no Post */}
           {!article && (
             <>
@@ -217,7 +220,7 @@ const PostPage = () => {
           </div>
 
           {/* Recent Posts */}
-          <RecentPostsFeed articles={articles} />
+          <RecentPostsFeed />
         </aside>
       </div>
     </main>

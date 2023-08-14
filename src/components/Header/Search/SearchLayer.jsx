@@ -7,13 +7,12 @@ import BlogFeed from "../../Blog/BlogPage/BlogFeed";
 import close from "../../../images/close1.svg";
 
 const SearchLayer = ({ onClose }) => {
-  const { search, setSearch, articles, isLoading, error } = useData();
+  const { articles, isLoading, error } = useData();
 
   console.log(articles);
   return (
     <div className="searchLayer active">
       <div className="searchLayerInner">
-        {" "}
         <button className="searchLayerClose" onClick={onClose}>
           <img src={close} className="closeButton" />
         </button>
@@ -27,7 +26,7 @@ const SearchLayer = ({ onClose }) => {
           <h2 style={{ color: "#36565C" }}>Search All Traveler's Tales</h2>
         </Fade>
         <div className="searchLayerWrapper">
-          <Search search={search} setSearch={setSearch} />
+          <Search />
         </div>
         <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
           <div /* className="blogPageInner" */>

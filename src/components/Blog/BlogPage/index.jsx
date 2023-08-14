@@ -7,8 +7,8 @@ import Search from "../../Header/Search/index";
 import "./BlogPageStyle.css";
 
 const Blog = () => {
-  const { search, setSearch, articles, isLoading, error } = useData();
   const { user } = UserAuth();
+  const { articles, isLoading, error } = useData();
 
   return (
     <main className="blogPageWrapper">
@@ -27,17 +27,15 @@ const Blog = () => {
 
         {/* Search Bar */}
         <div className="blogPageSearch">
-          <Search search={search} setSearch={setSearch} />
+          <Search />
         </div>
       </div>
 
       {/* All Posts */}
       <div className="blogPageInner">
         <>
-          {" "}
           {isLoading && (
             <p className="statusIsLoading">
-              {" "}
               <i className="fas fa-spinner fa-pulse"></i>
             </p>
           )}
@@ -49,7 +47,7 @@ const Blog = () => {
           {!isLoading &&
             !error &&
             (articles.length ? (
-              <BlogFeed articles={articles} />
+              <BlogFeed />
             ) : (
               <p className="statusMsg">No Posts to display.</p>
             ))}

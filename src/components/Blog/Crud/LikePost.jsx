@@ -1,10 +1,8 @@
 import { UserAuth } from "../../../context/AuthContext";
-import { useData } from "../../../context/DataContext";
 import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
 
 export default function LikeArticle({ article }) {
-  const { articles } = useData();
   const { user } = UserAuth();
   console.log(user.uid);
 

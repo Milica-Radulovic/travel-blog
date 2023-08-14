@@ -201,3 +201,7 @@ textarea:focus {
     font-size: 3rem;
   }
 }
+
+.commentInput {
+  width: 100%;
+}

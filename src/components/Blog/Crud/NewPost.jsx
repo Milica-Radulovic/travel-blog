@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
 import { Timestamp, collection, addDoc } from "firebase/firestore";
@@ -17,6 +17,7 @@ import logo from "../../../images/logo.svg";
 import "./NewPostStyle.css";
 
 const NewPost = () => {
+  const editorRef = useRef();
   const { user } = UserAuth();
   const [formData, setFormData] = useState({
     title: "",
@@ -65,17 +66,7 @@ const NewPost = () => {
   // handle Submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    {
-      /* if (
-      !formData.title ||
-      !formData.country ||
-      !formData.description ||
-      !formData.body ||
-      !formData.image
-    ) {
-      alert("Please fill all the fields");
-    }*/
-    }
+
     const errors = validate();
     setErrors(errors); // Update the errors state to trigger error display
 
@@ -206,18 +197,18 @@ const NewPost = () => {
         {/* Form Section */}
         <section className="formContainer">
           <div className="newPostForm">
+            {/* Add Image */}
             <label htmlFor="">
               <span className="required">Add Image *</span>
             </label>
             <input
-              className={errors.image ? "error-input" : ""}
               type="file"
               name="image"
               accept="image/*"
               required
               onChange={(e) => handleImageChange(e)}
             />
-            {errors.image && <p className="error-message">{errors.image}</p>}
+            {errors.image && <p className="errorMessage">{errors.image}</p>}
             {progress === 0 ? null : (
               <div className="progress">
                 <div
@@ -228,37 +219,35 @@ const NewPost = () => {
                 </div>
               </div>
             )}
+            {/* Title */}
             <label htmlFor="">
               <span className="required">Title *</span>
             </label>
             <input
-              className={errors.title ? "error-input" : ""}
               type="text"
               name="title"
               required
               value={formData.title}
               onChange={(e) => handleChange(e)}
             />
-            {errors.title && <p className="error-message">{errors.title}</p>}
+            {errors.title && <p className="errorMessage">{errors.title}</p>}
+            {/* Country */}
             <label htmlFor="">
               <span className="required">Country *</span>
             </label>
             <input
-              className={errors.country ? "error-input" : ""}
               type="text"
               name="country"
               required
               value={formData.country}
               onChange={(e) => handleChange(e)}
             />
-            {errors.country && (
-              <p className="error-message">{errors.country}</p>
-            )}
+            {errors.country && <p className="errorMessage">{errors.country}</p>}
+            {/* Description */}
             <label htmlFor="">
               <span className="required">Description *</span>
             </label>
             <textarea
-              className={errors.description ? "error-input" : ""}
               rows="10"
               cols="50"
               name="description"
@@ -267,37 +256,22 @@ const NewPost = () => {
               onChange={(e) => handleChange(e)}
             ></textarea>
             {errors.description && (
-              <p className="error-message">{errors.description}</p>
+              <p className="errorMessage">{errors.description}</p>
             )}
+            {/* Add Content */}
             <label htmlFor="">
               <span className="required">Add Content *</span>
             </label>
             <Editor
-              className={errors.body ? "error-input" : ""}
               required
               textareaName="body"
-              apiKey="4302b75eb45ce7c6212f47055d96a6f1b2f2b5af0095c92383e1cba784f571d4" // Replace with your TinyMCE API key
-              init={{
-                height: 500,
-                menubar: false,
-                plugins: [
-                  "advlist autolink lists link image charmap print preview anchor",
-                  "searchreplace visualblocks code fullscreen",
-                  "insertdatetime media table paste code help wordcount",
-                ],
-                toolbar:
-                  "undo redo | formatselect | " +
-                  "bold italic backcolor | alignleft aligncenter " +
-                  "alignright alignjustify | bullist numlist outdent indent | " +
-                  "removeformat | help",
-                content_style:
-                  "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
-              }}
+              apiKey="8zmnb49ff0a02lg7r7s588xn97a633hlofsx0ubj9q76nbva" // Replace with your TinyMCE API key
+              onInit={(evt, editor) => (editorRef.current = editor)}
               onEditorChange={(content) => {
                 setFormData({ ...formData, body: content });
               }}
-            />{" "}
-            {errors.body && <p className="error-message">{errors.body}</p>}
+            />
+            {errors.body && <p className="errorMessage">{errors.body}</p>}
             <button className="buttonOne" onClick={handleSubmit}>
               Submit
             </button>

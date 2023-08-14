@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import { Fade } from "react-awesome-reveal";
+
 const Missing = () => {
   return (
     <main className="registartionWrapper">

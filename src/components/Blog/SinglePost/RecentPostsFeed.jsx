@@ -1,6 +1,9 @@
+import { useData } from "../../../context/DataContext";
 import RecentPost from "./RecentPost";
 
-const RecentPostsFeed = ({ articles }) => {
+const RecentPostsFeed = () => {
+  const { articles } = useData();
+
   return (
     <>
       <section className="recentPostsFeed">

@@ -1,11 +1,10 @@
 import { UserAuth } from "../../context/AuthContext";
 import { useData } from "../../context/DataContext";
 import RecentPost from "../Blog/SinglePost/RecentPost";
-import { Fade } from "react-awesome-reveal";
 
 const UserPostsFeed = () => {
-  const { user, logout } = UserAuth();
-  const { articles, isLoading, deleteArticle } = useData();
+  const { user } = UserAuth();
+  const { articles } = useData();
 
   return (
     <section className="recentPostsFeed">

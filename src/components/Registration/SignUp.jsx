@@ -60,18 +60,18 @@ const SignUp = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+
           <label>
             <span className="required">Password *</span>
           </label>
           <div className="passwordWrapper">
-            {" "}
             <input
               type={showPassword ? "text" : "password"} // Show text if showPassword is true
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+
             <label className="customChekbox">
-              {" "}
               <input
                 type="checkbox"
                 onChange={() => setShowPassword((prev) => !prev)}

@@ -97,7 +97,7 @@ const About = () => {
             duration={3000}
             direction="down"
           >
-            <RecentPostsFeed articles={articles} />
+            <RecentPostsFeed />
           </Fade>
 
           {/* Link to Blog Page */}

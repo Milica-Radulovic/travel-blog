@@ -19,9 +19,7 @@ const Contact = () => {
         damping={1e-1}
         duration={3000}
       >
-        <div className="contactUsH2">
-          <span className="contactUsHeading">Contact Us</span>
-        </div>
+        <h2>Contact Us</h2>
       </Fade>
       <div className="inner">
         {/* Text Section with Logo and Social Media Links */}

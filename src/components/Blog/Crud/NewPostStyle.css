@@ -47,12 +47,8 @@
   flex-direction: column;
 }
 
-/* .error-input {
-  border: 2px solid red;
-} */
-
 /* Add this to style the error messages */
-.error-message {
+.errorMessage {
   color: red;
   font-size: 14px;
   margin-top: 5px;

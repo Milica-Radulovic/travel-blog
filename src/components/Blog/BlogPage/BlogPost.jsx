@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
-import { UserAuth } from "../../../context/AuthContext";
 import { FaAngleDoubleRight } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
 import "./BlogPageStyle.css";
 
 const BlogPost = ({ article }) => {
-  const { user } = UserAuth();
-
   return (
     /* Blog Article */
     <article className="blogPageArticle">
@@ -31,6 +28,7 @@ const BlogPost = ({ article }) => {
               : `${article.title.slice(0, 25)}...`}
           </h2>
 
+          {/* Post Author */}
           <p>
             {article.createdBy && (
               <span
@@ -39,15 +37,14 @@ const BlogPost = ({ article }) => {
                   fontWeight: "bold",
                 }}
               >
-                Created By:
+                Created By:{" "}
               </span>
-            )}{" "}
+            )}
             {article.createdBy}
           </p>
 
           {/* Post Date */}
           <p>
-            {" "}
             <span
               style={{
                 fontFamily: "'Laila', sans-serif",
@@ -83,7 +80,7 @@ const BlogPost = ({ article }) => {
               damping={1e-1}
               duration={3000}
             >
-              <p style={{ textTransform: "uppercase" }}>Discover more</p>{" "}
+              <p style={{ textTransform: "uppercase" }}>Discover more</p>
               <FaAngleDoubleRight style={{ fontSize: "1.4rem" }} />
             </Fade>
           </div>

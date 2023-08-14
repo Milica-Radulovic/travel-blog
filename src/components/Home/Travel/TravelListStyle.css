@@ -12,6 +12,7 @@
 .ItemInputContainer {
   display: flex;
   flex-direction: row;
+  gap: 3rem;
   width: 100%;
   height: fit-content;
   align-items: center;
@@ -21,9 +22,11 @@
   background-position: right;
   background-size: 35%;
 }
+
 .listIntro {
   width: 480px;
 }
+
 .inputCont {
   display: flex;
   width: 100%;
@@ -31,6 +34,7 @@
   justify-content: center;
   padding-top: 10px;
 }
+
 .ItemList1 {
   display: flex;
   flex-direction: column;
@@ -43,6 +47,7 @@
   background-position-y: 100%;
   background-size: 100px;
 }
+
 .ItemList2 {
   display: flex;
   flex-direction: column;
@@ -63,22 +68,27 @@
 .unpacked {
   background-color: aliceblue;
 }
+
 .packed {
   background-color: aliceblue;
 }
+
 .ItemList1 > ul,
 .ItemList2 > ul {
   list-style-type: none;
   width: 50%;
 }
+
 .ItemList1 > ul > li,
 .ItemList2 > ul > li {
   width: 100%;
 }
+
 .ItemList1 > ul:last-child,
 .ItemList2 > ul:last-child {
   padding-bottom: 2rem;
 }
+
 .BtnDone {
   font-family: "Ysabeau SC", sans-serif;
   text-decoration: none;
@@ -94,10 +104,12 @@
   text-align: center;
   margin: 2px;
 }
+
 .BtnDone:hover {
   background-color: #edeadc;
   color: #46666b;
 }
+
 .ItemContainer {
   display: flex;
   flex-direction: row;
@@ -108,26 +120,33 @@
   justify-content: space-between;
   object-fit: contain;
 }
+
 .formInput {
   display: flex;
   flex-direction: column;
 }
-*/ .ItemContainer > span {
+
+/* .ItemContainer > span {
   width: 100%;
-  padding: 1rem;
-}
+  padding: 1rem 2rem 1rem 0;
+} */
+
 .header2 {
   color: #27585c;
-  box-shadow: 0px 10px 13px -7px #27585c, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: 0px 10px 20px -7px rgba(0, 0, 0, 0.5),
+    5px 5px 15px 5px rgba(0, 0, 0, 0.1);
   width: 100%;
   z-index: -1;
 }
+
 .border {
   border: 3px solid #46666b;
 }
+
 .linethrough {
   text-decoration: solid 0.5px line-through;
 }
+
 .formInput {
   display: flex;
   flex-direction: column;
@@ -135,10 +154,13 @@
   justify-content: center;
   align-items: center;
 }
+
 .header2 {
-  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: 0px 10px 20px -7px rgba(0, 0, 0, 0.5),
+    5px 5px 15px 5px rgba(0, 0, 0, 0.1);
   width: 100%;
 }
+
 .selection {
   background-color: #46666b;
   color: white;
@@ -148,6 +170,7 @@
   border-radius: 0.2rem;
   padding-left: 14px;
 }
+
 .selectionFocus {
   background-color: #eddcdc;
   cursor: pointer;
@@ -165,20 +188,37 @@
   cursor: pointer;
   transition: all 0.4s linear;
 }
+
 .selectionOption {
   color: black;
   cursor: pointer;
   transition: all 0.4s linear;
 }
+
 .inputFocus {
   background-color: rgb(255, 255, 255) !important;
   transition: none;
 }
+
 .formBox {
   background-color: rgb(253, 246, 212);
   border-top-left-radius: 0.25rem !important;
   border-bottom-left-radius: 0.25rem !important;
 }
+
 .listMark {
   padding: 0.5rem;
+}
+
+@media (max-width: 992px) {
+  .ItemInputContainer {
+    flex-direction: column;
+    padding: 5rem;
+    background-position: center;
+    background-size: 90%;
+  }
+  .subTravelListBox {
+    display: flex;
+    flex-direction: column;
+  }
 }

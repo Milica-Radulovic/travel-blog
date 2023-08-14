@@ -9,7 +9,7 @@ import UserPostsFeed from "./UserPostsFeed";
 
 const AccountPage = () => {
   const { user, logout } = UserAuth();
-  const { articles, isLoading, deleteArticle } = useData();
+  const { articles } = useData();
   const navigate = useNavigate();
 
   // handle Logout
@@ -33,21 +33,38 @@ const AccountPage = () => {
         <img src={logo} style={{ width: "200px" }} />
         <p className="logoText">Write your own tale...</p>
       </span>{" "}
-      <Fade delay={1e2} cascade damping={1e-1} duration={3000} direction="down">
-        <h2>{user.displayName || user.email}'s Tales</h2>
-      </Fade>
       <div className="profilePageWrapper">
         <div className="profilePageInner">
           {/* Text */}
-          <div className="registrationText">
+          <div className="profilePageText">
             <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
               <h2>Your Profile</h2>
             </Fade>
             {hasUpdatedProfile ? (
               <div>
                 <div>
-                  <p>Name: {user.displayName}</p>
-                  <p>Email: {user.email}</p>
+                  <p>
+                    <span
+                      style={{
+                        fontFamily: "'Laila', sans-serif",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Name:{" "}
+                    </span>
+                    {user.displayName}
+                  </p>
+                  <p>
+                    <span
+                      style={{
+                        fontFamily: "'Laila', sans-serif",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Email:{" "}
+                    </span>
+                    {user.email}
+                  </p>
                   {user.photoURL && (
                     <img
                       src={user.photoURL}
@@ -71,7 +88,7 @@ const AccountPage = () => {
               Log Out
             </button>
           </div>
-        </div>{" "}
+        </div>
         {articles.every((article) => article.userId !== user.uid) ? (
           <div>
             <p className="userPostsPara">
@@ -101,7 +118,19 @@ const AccountPage = () => {
               cascade
               damping={1e-1}
               duration={3000}
-              direction="right"
+              direction="down"
+            >
+              <h2 className="profilePageH2">
+                {user.displayName || user.email}'s <br />
+                Tales
+              </h2>
+            </Fade>
+            <Fade
+              delay={1e2}
+              cascade
+              damping={1e-1}
+              duration={3000}
+              direction="down"
             >
               <UserPostsFeed />
             </Fade>
