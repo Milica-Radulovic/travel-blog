@@ -34,60 +34,67 @@ const ItemInput = ({ onAddItems }) => {
   };
 
   return (
-    <div className="ItemInputContainer">
-      <div className="listIntro">
-        <i
-          className="fa-solid fa-suitcase-rolling"
-          style={{ fontSize: "3rem", padding: "0.1rem" }}
-        ></i>
-        <label style={{ padding: "1.5rem" }}>
-          Introducing our Packing List App - your ultimate travel companion for
-          stress-free packing!
-        </label>
-        <ul>
-          <span style={{ fontWeight: "bold" }}>Our app lets you:</span>
-          <li>Add unlimited items, from one to ten per type.</li>
-          <li>Easily mark items as packed or delete them.</li>
-          <li>Organize items into customizable categories.</li>
-          <li>Receive smart suggestions based on your trip details.</li>
-        </ul>
-        <p>
-          Streamline your packing process and travel with confidence using our
-          Packing List App. Start packing smarter today!
-        </p>
+    <>
+      <div className="travelListWrapper">
+        <div className="backgroundImage"></div>
+        <div className="travelListText">
+          <i
+            className="fa-solid fa-suitcase-rolling"
+            style={{ fontSize: "3rem", padding: "0.1rem" }}
+          ></i>
+          <label style={{ padding: "1rem" }}>
+            <span style={{ fontWeight: "bold", fontSize: "1.4rem" }}>
+              Introducing our Packing List App - your ultimate travel companion
+              for stress-free packing!
+            </span>
+          </label>
+          <ul>
+            <span style={{ fontWeight: "bold" }}>Our app lets you:</span>
+            <li>Add unlimited items, from one to ten per type.</li>
+            <li>Easily mark items as packed or delete them.</li>
+            <li>Organize items into customizable categories.</li>
+            <li>Receive smart suggestions based on your trip details.</li>
+          </ul>
+          <p>
+            Streamline your packing process and travel with confidence using our
+            Packing List App. Start packing smarter today!
+          </p>
+        </div>
       </div>
       <div>
-        <form onSubmit={handleFormSubmit} className="formInput">
-          <div className="inputCont">
-            <input
-              onBlur={() => setInputClass(false)}
-              onFocus={handleInputFocus}
-              type="text"
-              placeholder="Add item to list*"
-              value={inputValue}
-              onChange={handleInputChange}
-              className={inputStyle}
-            />
-            <select
-              onFocus={handleSelectionFocus}
-              onBlur={() => setSelectionClass(false)}
-              onChange={handleSelectChange}
-              value={selected}
-              className={selectionStyle}
-            >
-              {[...Array(10)].map((_, i) => (
-                <option className="selectionOption" value={i + 1} key={i + 1}>
-                  {i + 1}
-                </option>
-              ))}
-            </select>
-          </div>
-          <button type="submit" className="buttonOne">
-            Add to List
-          </button>
-        </form>
+        <div className="formInputWrapper">
+          <form onSubmit={handleFormSubmit} className="formInput">
+            <div className="inputCont">
+              <input
+                onBlur={() => setInputClass(false)}
+                onFocus={handleInputFocus}
+                type="text"
+                placeholder="Add item to list*"
+                value={inputValue}
+                onChange={handleInputChange}
+                className={inputStyle}
+              />
+              <select
+                onFocus={handleSelectionFocus}
+                onBlur={() => setSelectionClass(false)}
+                onChange={handleSelectChange}
+                value={selected}
+                className={selectionStyle}
+              >
+                {[...Array(10)].map((_, i) => (
+                  <option className="selectionOption" value={i + 1} key={i + 1}>
+                    {i + 1}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <button type="submit" className="buttonOne">
+              Add to List
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
@@ -105,7 +112,7 @@ const Item = ({ handleDone, handleUnDone, item, onDelete }) => {
         </button>
       )}
       {item.isDone && (
-        <div>
+        <div className="done">
           <button className="BtnDone" onClick={() => handleUnDone(item.id)}>
             <i
               className="fa-solid fa-arrow-left"
@@ -129,7 +136,7 @@ const ToDo = ({ handleDone, handleUnDone, toDo }) => {
         <i className="fa-solid fa-compass" style={{ marginRight: "0.5em" }}></i>
         To Do List
       </h2>
-      <ul>
+      <div className="toDoList">
         {toDo.map((item) => (
           <Item
             handleUnDone={() => handleUnDone(item.id)}
@@ -138,7 +145,7 @@ const ToDo = ({ handleDone, handleUnDone, toDo }) => {
             key={item.id}
           />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
@@ -153,7 +160,7 @@ const Done = ({ handleDone, handleUnDone, onDelete, done }) => {
         ></i>
         Packed
       </h2>
-      <ul>
+      <div className="toDoList">
         {done.map((item) => (
           <Item
             handleUnDone={() => handleUnDone(item.id)}
@@ -163,7 +170,7 @@ const Done = ({ handleDone, handleUnDone, onDelete, done }) => {
             onDelete={onDelete}
           />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

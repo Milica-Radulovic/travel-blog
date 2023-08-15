@@ -1,7 +1,7 @@
 .travelListBox {
   display: flex;
   flex-direction: column;
-  background-color: #edeadc;
+  background-color: var(--backgroundColorLight);
 }
 
 .subTravelListBox {
@@ -9,22 +9,38 @@
   flex-direction: row;
 }
 
-.ItemInputContainer {
-  display: flex;
-  flex-direction: row;
-  gap: 3rem;
-  width: 100%;
-  height: fit-content;
-  align-items: center;
-  padding: 5rem;
-  background-image: url(/src/images/—Pngtree—2.5d\ hand-painted\ creative\ travel\ item_4079261.png);
-  background-repeat: no-repeat;
-  background-position: right;
-  background-size: 35%;
+.travelListWrapper {
+  height: 50vh;
+  width: 80%;
+  margin: 5rem auto;
+  position: relative; /* Make the parent element relative */
 }
 
-.listIntro {
-  width: 480px;
+.backgroundImage {
+  background-image: url(/src/images/—Pngtree—2.5d\ hand-painted\ creative\ travel\ item_4079261.png);
+  filter: blur(2px);
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.travelListText {
+  background-color: rgba(237, 234, 220, 0.6);
+  color: black;
+  font-size: 1.2rem;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: fit-content;
+  padding: 20px;
 }
 
 .inputCont {
@@ -73,19 +89,19 @@
   background-color: aliceblue;
 }
 
-.ItemList1 > ul,
-.ItemList2 > ul {
+.ItemList1 > div,
+.ItemList2 > div {
   list-style-type: none;
   width: 50%;
 }
 
-.ItemList1 > ul > li,
-.ItemList2 > ul > li {
+.ItemList1 > div > li,
+.ItemList2 > div > li {
   width: 100%;
 }
 
-.ItemList1 > ul:last-child,
-.ItemList2 > ul:last-child {
+.ItemList1 > div:last-child,
+.ItemList2 > div:last-child {
   padding-bottom: 2rem;
 }
 
@@ -117,19 +133,15 @@
   border-top: 1px solid #46666b;
   background-color: #fdf6d4;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between !important;
   object-fit: contain;
+  gap: 0.25rem;
 }
 
 .formInput {
   display: flex;
   flex-direction: column;
 }
-
-/* .ItemContainer > span {
-  width: 100%;
-  padding: 1rem 2rem 1rem 0;
-} */
 
 .header2 {
   color: #27585c;
@@ -145,6 +157,15 @@
 
 .linethrough {
   text-decoration: solid 0.5px line-through;
+  display: flex;
+  flex: 70%;
+  width: 70%;
+}
+
+.done {
+  display: flex;
+  flex: 30%;
+  width: 30%;
 }
 
 .formInput {
@@ -210,15 +231,80 @@
   padding: 0.5rem;
 }
 
-@media (max-width: 992px) {
-  .ItemInputContainer {
-    flex-direction: column;
-    padding: 5rem;
-    background-position: center;
-    background-size: 90%;
+@media (min-width: 577px) and (max-width: 1600px) {
+  .travelListWrapper {
+    height: 50vh;
+    width: 100%;
+    margin: 3rem auto;
+  }
+  .travelListText {
+    background-color: rgba(237, 234, 220, 0.6);
+    color: black;
+    font-size: 1.2rem;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 90%;
+    padding: 20px;
   }
   .subTravelListBox {
     display: flex;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .travelListWrapper {
+    height: 60vh;
+    width: 100%;
+    margin: 0rem auto;
+  }
+  .travelListText {
+    font-size: 1rem;
+    width: 90%;
+  }
+  .subTravelListBox {
+    display: flex;
+    flex-direction: column;
+  }
+  .ItemList1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    padding: 0.5rem;
+    background-image: none;
+  }
+  .ItemList2 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    padding: 0.5rem;
+    background-image: none;
+  }
+  .ItemList1 > div,
+  .ItemList2 > div {
+    list-style-type: none;
+    width: 100%;
+  }
+}
+
+@media (min-width: 301px) and (max-width: 400px) {
+  .travelListWrapper {
+    height: 70vh;
+    width: 100%;
+    margin: 3rem auto;
+  }
+}
+
+@media (max-width: 300px) {
+  .travelListWrapper {
+    height: 100vh;
+    width: 100%;
+    margin: 3rem auto;
   }
 }

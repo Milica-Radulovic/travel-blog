@@ -1,28 +1,16 @@
 /* /navbar */
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow-x: hidden;
-}
-
 .header {
-  color: #e1d4bc;
-  background-color: #36565c;
+  color: var(--navFontColor);
+  background-color: var(--bodyBackgroundColor);
   height: fit-content;
-  /*   width: 100%; */
 }
 
 .navbarContaner {
   width: 100%;
   height: 100px;
   display: flex;
-  background-color: #36565c;
-  border: 1px solid #31474b;
+  background-color: var(--navBackgroundColor);
+  border: 1px solid var(--navSeparatorColor);
   border-radius: 10px;
   margin: 1rem 0;
 }
@@ -55,7 +43,7 @@ body {
   flex: 10%;
   width: 10%;
   text-align: center;
-  border-right: 1px solid #31474b;
+  border-right: 1px solid var(--navSeparatorColor);
   color: #e1d4bc;
   font-size: 1.4rem;
   cursor: pointer;
@@ -67,7 +55,7 @@ body {
 }
 
 .navbarMainLink:first-child {
-  border-left: 1px solid #31474b; /* Add a side border between the links */
+  border-left: 1px solid var(--navSeparatorColor); /* Add a side border between the links */
 }
 
 .navbarRight {
@@ -83,28 +71,31 @@ body {
 .navIcon {
   width: 60px;
   height: 60px;
-  background-color: #e1d4bc;
+  background-color: var(--navFontColor);
   border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #36565c;
-  transition: all 0.4s linear;
+  color: var(--navBackgroundColor);
+  transition: all 0.3s linear;
 }
 
 .navIcon:hover {
-  color: #f0ede8;
+  color: var(--navFontHoverColor);
 }
 
 .navIcon i {
   transition: 0.5s ease-in-out;
 }
+
 .navIcon:hover i {
   transform: rotate(360deg);
 }
+
 .navIcon:hover {
   background-color: var(--navBackgroundColor);
 }
+
 .navbarLogo {
   width: 140px;
 }
@@ -139,12 +130,12 @@ body {
   .responsiveNavIcon {
     width: 60px;
     height: 60px;
-    background-color: #e1d4bc;
+    background-color: var(--navFontColor);
     border-radius: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #36565c;
+    color: var(--navBackgroundColor);
   }
   .navbarHamburger {
     display: flex;
@@ -166,50 +157,22 @@ body {
     right: -80%;
     opacity: 1;
     transition: all 0.5s ease;
-    background: #36565c;
+    background: var(--navBackgroundColor);
     right: 0px;
     opacity: 1;
     transition: all 0.5s ease;
     z-index: 99999;
   }
   .extendedNavbarMainLink {
-    color: #e1d4bc;
+    color: var(--navFontColor);
     font-size: 1.2rem;
     text-decoration: none;
-    border-bottom: 1px solid #31474b;
+    border-bottom: 1px solid var(--navSeparatorColor);
     transition: all 0.4s linear;
   }
   .extendedNavbarMainLink:hover {
-    color: #f0ede8;
+    color: var(--navFontHoverColor);
   }
-}
-
-.mainLogo {
-  font-size: 2.5rem;
-  cursor: pointer;
-}
-
-.mainLogo:hover {
-  color: azure;
-}
-
-.navBar {
-  display: flex;
-  margin-top: 1%;
-  margin-bottom: 1rem;
-  width: 100%;
-  height: 80px;
-  font-size: 1.5rem;
-  background-color: #36565c;
-  box-shadow: -1px 4px 5px -4px rgba(0, 0, 0, 0.77);
-}
-
-.navBarList {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  list-style-type: none;
-  width: 100%;
 }
 
 /* Search Layer */
