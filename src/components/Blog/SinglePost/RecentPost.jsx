@@ -8,7 +8,7 @@ const RandomPost = ({ article }) => {
           <img
             className="recentPostImage"
             src={article.imageUrl}
-            alt="Recipe Image"
+            alt={article.title}
             style={{ width: "100%" }}
           />
           <div className="imageOverlay">

@@ -12,6 +12,7 @@ const BlogPost = ({ article }) => {
         <img
           className="blogPageImage"
           src={article.imageUrl}
+          alt={article.title}
           style={{
             width: "100%",
             height: "400px",

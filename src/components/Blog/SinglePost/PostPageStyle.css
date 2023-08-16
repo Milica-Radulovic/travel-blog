@@ -137,6 +137,7 @@
 }
 
 .imageText {
+  width: 100%;
   color: white;
   font-size: 20px;
   position: absolute;
