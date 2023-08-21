@@ -1,5 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  orderBy,
+  onSnapshot,
+} from "firebase/firestore";
 import { db } from "../firebase";
 
 const DataContext = createContext();
@@ -14,7 +20,11 @@ const DataContextProvider = ({ children }) => {
   // fetch data
   useEffect(() => {
     const articleRef = collection(db, "Articles");
-    const q = query(articleRef, orderBy("datetime", "desc"));
+    const q = query(
+      articleRef,
+      where("isApproved", "==", true), // Add the filtering condition
+      orderBy("datetime", "desc")
+    );
 
     const unsubscribe = onSnapshot(
       q,
@@ -43,7 +53,9 @@ const DataContextProvider = ({ children }) => {
     const filteredResults = articles.filter(
       (article) =>
         article.body.toLowerCase().includes(search.toLowerCase()) ||
-        article.title.toLowerCase().includes(search.toLowerCase())
+        article.title.toLowerCase().includes(search.toLowerCase()) ||
+        article.createdBy.toLowerCase().includes(search.toLowerCase()) ||
+        article.country.toLowerCase().includes(search.toLowerCase())
     );
 
     setSearchResults(filteredResults);

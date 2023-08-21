@@ -117,7 +117,10 @@ const NewPost = () => {
             isApproved: false,
           })
             .then(() => {
-              toast("Post added successfully.", { type: "success" });
+              toast(
+                "Thank you for submitting your post! It will be reviewed before publishing to ensure its quality. Please allow some time for the review process.",
+                { type: "success" }
+              );
               setProgress(0);
             })
             .catch((err) => {
