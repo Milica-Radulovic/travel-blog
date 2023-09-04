@@ -1,3 +1,4 @@
+import { Fade } from "react-awesome-reveal";
 import "../HomePageStyle.css";
 
 const Slide = ({
@@ -12,7 +13,15 @@ const Slide = ({
         onClick={handlePrev}
         className="fa-solid fa-chevron-left prevBtn"
       ></button>
-      <span className="slideSpan">{textPraragraphs}</span>
+      <Fade
+        className="blogPageDMFade"
+        delay={1e2}
+        cascade
+        damping={1e-1}
+        duration={3000}
+      >
+        <span className="slideSpan">{textPraragraphs}</span>
+      </Fade>
       <button
         className="fa-solid fa-chevron-right nextBtn"
         onClick={handleNext}

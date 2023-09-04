@@ -15,13 +15,14 @@
   display: flex;
   justify-content: center;
   gap: 5rem;
-  margin: 6rem 0;
+  margin: 6rem 0 0 0;
   border-top: 0.2px solid var(--formBorderColor);
 }
 
 .postPageArticle {
   flex: 70%;
   width: 70%;
+  padding-bottom: 6rem;
 }
 
 .postPageAside {
@@ -55,6 +56,10 @@
 
 .postPageDate {
   text-decoration: underline;
+}
+
+.likePostWrapper {
+  padding: 2rem 0;
 }
 
 .postPageButton {
@@ -164,9 +169,13 @@
   .postPageArticle {
     flex: 60%;
     width: 60%;
+    padding-bottom: 3rem;
   }
   .postPageDescription {
     font-size: 1.2rem;
+  }
+  .likePostWrapper {
+    padding: 0.5rem 0;
   }
   .postPageAside {
     flex: 40%;
@@ -189,13 +198,18 @@
     width: 90%;
     flex-direction: column;
     margin: 3rem 0;
+    border-top: none;
   }
   .postPageArticle {
     flex: 100%;
     width: 100%;
+    padding-bottom: 0;
   }
   .postPageDescription {
     font-size: 1rem;
+  }
+  .likePostWrapper {
+    padding: 0.5rem 0;
   }
   .postPageAside {
     flex: 100%;

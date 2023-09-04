@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 const RandomPost = ({ article }) => {
   return (
     <article className="recentPost">
-      <Link to={`/article/${article.id}`}>
+      <Link
+        to={`/article/${article.id}`}
+        title={`Read More About ${article.title}`}
+        aria-label={`Read More About ${article.title}`}
+      >
         <div className="imageContainer">
           <img
             className="recentPostImage"

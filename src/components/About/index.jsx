@@ -11,18 +11,22 @@ const About = () => {
   return (
     <main className="aboutPageWrapper">
       <div className="aboutPageInner">
-        {/* Logo */}
-        <div className="logo">
-          <img src={logo} style={{ width: "200px" }} />
-          <p className="logoText">Write your own tale...</p>
-        </div>
-
         {/* Heading 2 */}
         <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
           <h2 className="aboutPageH2">
             Welcome to Traveler's Tales , where wanderlust meets storytelling!
           </h2>
         </Fade>
+
+        {/* Logo */}
+        <div className="logo">
+          <img
+            src={logo}
+            style={{ width: "200px" }}
+            alt="Traveler's Tales Logo"
+          />
+          <p className="logoText">Write your own tale...</p>
+        </div>
 
         {/* Text */}
         <p>
@@ -101,7 +105,11 @@ const About = () => {
           </Fade>
 
           {/* Link to Blog Page */}
-          <Link className="aboutPageLinkTBP" to="/blog">
+          <Link
+            className="aboutPageLinkTBP"
+            to="/blog"
+            aria-label="Visit Our Blog Page"
+          >
             <button className="buttonOne"> See more</button>
           </Link>
         </div>

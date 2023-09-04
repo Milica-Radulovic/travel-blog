@@ -14,7 +14,7 @@ const SearchLayer = ({ onClose }) => {
     <div className="searchLayer active">
       <div className="searchLayerInner">
         <button className="searchLayerClose" onClick={onClose}>
-          <img src={close} className="closeButton" />
+          <img src={close} className="closeButton" alt="Close Button" />
         </button>
         <Fade delay={1e2} cascade damping={1e-1} duration={3000}>
           <div className="logo">
@@ -55,8 +55,6 @@ const SearchLayer = ({ onClose }) => {
             </>
           </div>
         </Fade>
-        {/*  <Search search={search} setSearch={setSearch} /> */}
-        {/* Replace the following line with your posts component */}
       </div>
     </div>
   );

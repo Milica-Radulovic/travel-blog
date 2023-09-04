@@ -4,28 +4,51 @@ import { UserAuth } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 import { Fade } from "react-awesome-reveal";
 import logo from "../../images/logo.svg";
+import { sendEmailVerification } from "firebase/auth"; // Import sendEmailVerification
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // Add showPassword state
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-  const { createUser } = UserAuth();
+  const { createUser, updateProfile } = UserAuth(); // Also using updateProfile function
   const navigate = useNavigate();
 
-  // handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+
     try {
-      await createUser(email, password);
-      toast("Congratulations! You have signed up successfully.", {
-        type: "success",
-      });
+      // Create user account
+      const newUserCredential = await createUser(email, password);
+
+      // Update user's display name (can be done in updateProfile function)
+      await updateProfile(newUserCredential.user, { displayName: email });
+
+      // Send verification email
+      await sendEmailVerification(newUserCredential.user);
+
+      toast(
+        "Congratulations! You have signed up successfully. Please check your email for verification.",
+        {
+          type: "success",
+        }
+      );
+
       navigate("/account");
     } catch (err) {
       setError(err.message);
       toast(err.message, { type: "error" });
+    }
+  };
+
+  // Send verification email function
+  const sendEmailVerification = async (user) => {
+    try {
+      await sendEmailVerification(auth, user); // Correct call
+      console.log("Verification email sent!");
+    } catch (err) {
+      console.error("Error sending verification email:", err);
     }
   };
 

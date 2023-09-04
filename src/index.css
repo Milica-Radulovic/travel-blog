@@ -14,7 +14,6 @@
   --formBorderColor: #b4c7bf;
   --formOnFocusOutline: #688387;
   --formOnFocusBackground: #fbfbfc;
-  height: 100%;
   box-sizing: border-box;
   overflow-x: hidden;
   font-family: "Ysabeau SC", sans-serif;
@@ -32,9 +31,12 @@ html {
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
   padding: 0;
+  width: 100%;
+
   box-sizing: border-box;
   overflow-x: hidden;
   background-color: var(--bodyBackgroundColor);

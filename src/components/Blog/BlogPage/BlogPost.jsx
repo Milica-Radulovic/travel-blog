@@ -23,11 +23,7 @@ const BlogPost = ({ article }) => {
         {/* Post Text Card*/}
         <div className="blogPageArticleText">
           {/* Post Title */}
-          <h2 className="blogPageTitle">
-            {article.title.length <= 25
-              ? article.title
-              : `${article.title.slice(0, 25)}...`}
-          </h2>
+          <h2 className="blogPageTitle">{article.title}</h2>
 
           {/* Post Author */}
           <p>

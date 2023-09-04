@@ -56,12 +56,6 @@ const PostPage = () => {
 
   return (
     <main className="postPageWrappe">
-      {/* Logo */}
-      <span className="registrationLogo">
-        <img className="logoColor" src={logo} style={{ width: "200px" }} />
-        <p className="logoText">Write your own tale...</p>
-      </span>
-
       <div className="postPageInner">
         {/* Post */}
         <article className="postPageArticle">
@@ -139,14 +133,38 @@ const PostPage = () => {
                 dangerouslySetInnerHTML={{ __html: article.body }}
               />
 
+              {/* Logo */}
+              <div
+                style={{
+                  width: "100%",
+                  borderBottom: "0.2px solid #b4c7bf",
+                  margin: "0 0 3rem 0",
+                  padding: "0 0 3rem 0",
+                }}
+              >
+                <span className="registrationLogo">
+                  <img
+                    className="logoColor"
+                    src={logo}
+                    alt="Traveler's Tales Logo"
+                    style={{ width: "150px", display: "block", margin: "auto" }}
+                  />
+                  <p className="logoText" style={{ fontSize: "1.4rem" }}>
+                    Write your own tale...
+                  </p>
+                </span>
+              </div>
+
               {/* Likes */}
-              {user && <LikePost article={article} />}
-              <div>
-                <p>
-                  {article.likes?.length === 1
-                    ? `${article.likes.length} like`
-                    : `${article.likes?.length} likes`}
-                </p>
+              <div className="likePostWrapper">
+                {user && <LikePost article={article} />}
+                <div>
+                  <p>
+                    {article.likes?.length === 1
+                      ? `${article.likes.length} like`
+                      : `${article.likes?.length} likes`}
+                  </p>
+                </div>
               </div>
             </>
           )}
@@ -196,6 +214,15 @@ const PostPage = () => {
                   100' s
                 </span>
                 <br />
+                of
+                <span
+                  style={{
+                    fontFamily: "'Laila', sans-serif",
+                  }}
+                >
+                  Traveler's Tales
+                </span>
+                on our Blog Page
                 <Fade
                   delay={1e2}
                   cascade
@@ -205,16 +232,6 @@ const PostPage = () => {
                 >
                   <FaAngleDoubleDown style={{ fontSize: "2rem" }} />
                 </Fade>
-                <br />
-                of{" "}
-                <span
-                  style={{
-                    fontFamily: "'Laila', sans-serif",
-                  }}
-                >
-                  Traveler's Tales
-                </span>{" "}
-                on our Blog Page
               </Link>
             </div>
           </div>
