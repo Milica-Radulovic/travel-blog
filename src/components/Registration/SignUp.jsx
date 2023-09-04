@@ -25,30 +25,14 @@ const SignUp = () => {
       // Update user's display name (can be done in updateProfile function)
       await updateProfile(newUserCredential.user, { displayName: email });
 
-      // Send verification email
-      await sendEmailVerification(newUserCredential.user);
-
-      toast(
-        "Congratulations! You have signed up successfully. Please check your email for verification.",
-        {
-          type: "success",
-        }
-      );
+      toast("Congratulations! You have signed up successfully.", {
+        type: "success",
+      });
 
       navigate("/account");
     } catch (err) {
       setError(err.message);
       toast(err.message, { type: "error" });
-    }
-  };
-
-  // Send verification email function
-  const sendEmailVerification = async (user) => {
-    try {
-      await sendEmailVerification(auth, user); // Correct call
-      console.log("Verification email sent!");
-    } catch (err) {
-      console.error("Error sending verification email:", err);
     }
   };
 
