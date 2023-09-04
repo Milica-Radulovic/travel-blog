@@ -18,3 +18,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_TRAVEL_BLOG_A62EF }}'
           channelId: live
           projectId: travel-blog-a62ef
+
